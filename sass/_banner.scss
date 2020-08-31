@@ -9,7 +9,7 @@
     background-position: top right;
 
     @media #{$small_mobile}{
-        height: 700px;
+        height: 580px;
         background-image: none;
         background-color: #f7f7f7;
     }
@@ -165,7 +165,7 @@
         position: absolute;
         top: 163px;
         width: 45%;
-        height: 69%;
+        height: 50%;
         content: "";
         background-image: url(../img/banner_img.png);
         background-size: 100% 100%;
@@ -173,6 +173,8 @@
         @media #{$small_mobile}{
             position: absolute;
             top: 110px;
+            width: 50%;
+            height: 69%;
             max-width: 100%;
             max-height: 100%;
             content: "";
@@ -187,6 +189,8 @@
         @media #{$large_mobile}{
             position: absolute;
             top: 110px;
+            width: 50%;
+            height: 69%;
             max-width: 100%;
             max-height: 100%;
             content: "";

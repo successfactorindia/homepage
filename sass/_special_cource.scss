@@ -69,7 +69,7 @@
                 font-weight: 600;
                 margin-top: 25px;
                 margin-bottom: 10px;
-                @include transform_time(0.5s);
+                @include transform_time(0.1s);
                 &:hover{
                     color: $btn_bg;
                 }

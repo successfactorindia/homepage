@@ -113,7 +113,7 @@
  
 
 $('.counter').counterUp({
-  time: 2000
+  time: 1000
 });
 
   $('.slider').slick({

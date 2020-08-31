@@ -20,13 +20,13 @@
 			content: "";
 			width: 100%;
 			height: 100%;
+			opacity: 0;
 			top: 0;
 			left: 0;
 			z-index: -1;
 			@extend %custom_btn_bg_1;
 			background-size: 200% auto;
 		}
-		
 	}
 	.main-menu-item {
 		text-align: right;

@@ -3010,6 +3010,13 @@ ul {
     padding: 70px 0px 50px;
   }
 }
+.special_cource .single_special_cource {
+  margin-bottom: 20px;
+}
+.special_cource .single_special_cource .special_img {
+  width: 365px;
+  height: 300px;
+}
 @media (max-width: 576px) {
   .special_cource .single_special_cource {
     margin-bottom: 20px;
@@ -3032,7 +3039,7 @@ ul {
   }
 }
 .special_cource .single_special_cource .special_cource_text {
-  padding: 35px 35px 40px;
+  padding: 15px 35px 40px;
   border: 1px solid #edeff2;
   border-top: 0px;
 }

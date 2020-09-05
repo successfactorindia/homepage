@@ -15,6 +15,11 @@
     @media #{$medium_device} {}
 
     .single_special_cource {
+        margin-bottom: 20px;
+        .special_img {
+            width: 365px;
+            height: 300px;
+        }
 
         @media #{$small_mobile} {
             margin-bottom: 20px;
@@ -38,24 +43,23 @@
         }
 
         @media #{$medium_device} {}
-
         .special_cource_text {
-            padding: 35px 35px 40px;
+            padding: 15px 35px 40px;
             border: 1px solid $border_color;
             border-top: 0px;
 
             @media #{$small_mobile} {
-                padding: 20px 15px 15px;
+                padding: 5px 15px 15px;
             }
 
             @media #{$large_mobile} {
-                padding: 20px 15px 15px;
+                padding: 5px 15px 15px;
             }
 
             @media #{$tab_device} {}
 
             @media #{$medium_device} {
-                padding: 20px 15px 15px;
+                padding: 5px 15px 15px;
             }
 
             h4 {

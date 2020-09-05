@@ -1864,7 +1864,7 @@ ul {
     height: 580px;
     background-image: none;
     background-color: #f7f7f7;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -2995,20 +2995,6 @@ ul {
 }
 
 /********** special_cource_css************/
-
-.single_special_cource {
-  max-width: 300px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.special_img_container {
-  height: 300px;
-}
-.special_cource .single_special_cource .special_img {
-  max-width: 300px;
-  height: 300px;
-}
-
 @media (max-width: 576px) {
   .special_cource {
     padding: 70px 0px 50px;
@@ -3029,7 +3015,7 @@ ul {
     margin-bottom: 20px;
   }
   .special_cource .single_special_cource .special_img {
-    /* width: 100%; */ 
+    width: 100%;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -3037,7 +3023,7 @@ ul {
     margin-bottom: 20px;
   }
   .special_cource .single_special_cource .special_img {
-    /* width: 100%; */
+    width: 100%;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -3049,21 +3035,20 @@ ul {
   padding: 35px 35px 40px;
   border: 1px solid #edeff2;
   border-top: 0px;
-  width: 300px;
 }
 @media (max-width: 576px) {
   .special_cource .single_special_cource .special_cource_text {
-    padding: 20px 15px 15px;
+    padding: 5px 15px 15px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .special_cource .single_special_cource .special_cource_text {
-    padding: 20px 15px 15px;
+    padding: 5px 15px 15px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .special_cource .single_special_cource .special_cource_text {
-    padding: 20px 15px 15px;
+    padding: 5px 15px 15px;
   }
 }
 .special_cource .single_special_cource .special_cource_text h4 {

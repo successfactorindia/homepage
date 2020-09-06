@@ -12,6 +12,7 @@
 	.navbar {
 		padding: 20px 0px;
 	}
+	
 	.navbar-toggler{
 		position: relative;
 		z-index: 1;
@@ -93,6 +94,10 @@
     }
 }
 @media #{$small_mobile} {
+
+	.main_menu .navbar {
+		padding: 14px 0px;
+	}
 	.single_page_menu{
 		.navbar-collapse{
 			ul {

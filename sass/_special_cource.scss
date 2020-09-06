@@ -1,15 +1,15 @@
 /********** special_cource_css************/
 .special_cource {
     @media #{$small_mobile} {
-        padding: 70px 0px 50px;
+        padding: 0px 0px 50px;
     }
 
     @media #{$large_mobile} {
-        padding: 70px 0px 50px;
+        padding: 0px 0px 50px;
     }
 
     @media #{$tab_device} {
-        padding: 70px 0px 50px;
+        padding: 0px 0px 50px;
     }
 
     @media #{$medium_device} {}

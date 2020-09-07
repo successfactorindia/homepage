@@ -144,9 +144,10 @@ body {
   color: white;
 }
 
-.limited_seats {
+.banner_part .banner_text .limited_seats {
     margin-top: 10px;
     font-weight: bold;
+    color: #0c2f60;
 }
 
  /* Responsive  */
@@ -165,9 +166,11 @@ body {
       .card-banner .price {
         font-size: 4rem;
       }
-
-      .limited_seats {
-          color: pink
+      .card-body .plan-name {
+          display: none;
+      }
+      .card-body .plan-feature-list {
+        margin: 1rem 4rem;
       }
 }
 

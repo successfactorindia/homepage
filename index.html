@@ -95,11 +95,10 @@
                             <p>Learn directly from India's <strong>20+ Government Officers</strong></p>
                             <br/>
                             <p>Exams Covered: <b>UPSC, PSC, SSC, Bank PO, PSUs, LIC, RRB NTPC, RBI, SI</b> and many more hidden exams</p>
-                                
+                            <p class="limited_seats"></p>
                             <button class="btn_1" onclick="scrollToPlans()">Book Now</button>
-                            <a href="https://wa.link/65ar60" class="btn_2">WhatsApp</a>
+                            <a href="https://wa.link/65ar60" class="btn_2 whatapp_button">WhatsApp</a>
                             <br/>
-                            <strong class="limited_seats">Limited Seats, Filing Fast</strong>
                         </div>
                     </div>
                 </div>
@@ -808,6 +807,11 @@
             setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
         });
 
+
+        (function() {
+            const users = 45 + ((new Date().getDate() % 10) * 3);
+            document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students bought yesterday`
+        })();
     </script>
 </body>
 

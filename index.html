@@ -27,6 +27,8 @@
     <!-- <link rel="stylesheet" href="css/owl.carousel.min.css"> -->
     <!-- themify CSS -->
     <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <!-- flaticon CSS -->
     <link rel="stylesheet" href="css/flaticon.css">
     <!-- font awesome CSS -->
@@ -410,7 +412,9 @@
                     <li class="plan-feature"><b>5000+ Student Network</b></li>
                     <li class="plan-feature"><b style="text-decoration: line-through;">40 Mins 1-to-1 Mentoring</b></li>
 				</ul>
-				<a class="btn_1" href="https://imjo.in/jKAcC8">Book Now</a>
+                <a class="btn_1 book_now_standard" href="https://imjo.in/jKAcC8">
+                    Book Now
+                </a>
 			</div>
 			<!--     end of card body     -->
 		</div>
@@ -455,7 +459,7 @@
                     <li class="plan-feature"><b>5000+ Student Network</b></li>
                     <li class="plan-feature"><b>40 Mins 1-to-1 Mentoring</b></li>
                 </ul>
-				<a class="btn_1" href="https://imjo.in/yVnWM6">Book Now</a>
+				<a class="btn_1 book_now_personal" href="https://imjo.in/yVnWM6">Book Now</a>
 			</div>
 			<!--     end of card body     -->
 		</div>
@@ -769,12 +773,7 @@
     </footer>
     <!-- footer part end-->
 
-    <script>
-        function scrollToPlans() {
-          var elmnt = document.getElementById("purchase-plans");
-          elmnt.scrollIntoView();
-        }
-    </script>
+
     <script src="js/jquery-1.12.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -787,6 +786,29 @@
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        function scrollToPlans() {
+          var elmnt = document.getElementById("purchase-plans");
+          elmnt.scrollIntoView();
+        }
+        
+        const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
+
+        $('.book_now_standard').on('click', function() {
+            const bookNowButton = document.getElementsByClassName('book_now_standard')[0];
+            const oldText = bookNowButton.innerHTML;
+            bookNowButton.innerHTML = loading;
+            setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
+        });
+
+        $('.book_now_personal').on('click', function() {
+            const bookNowButton = document.getElementsByClassName('book_now_personal')[0];
+            const oldText = bookNowButton.innerHTML;
+            bookNowButton.innerHTML = loading;
+            setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
+        });
+
+    </script>
 </body>
 
 </html>

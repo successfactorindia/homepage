@@ -83,6 +83,10 @@ body {
   margin-bottom: -0.5rem;
   color: var(--clr-gray-dark);
 }
+.card-banner .non-plan-price {
+    font-size: 3.5rem;
+}
+
 .card-banner .price::before {
   content: "₹";
   display: inline-block;
@@ -166,6 +170,9 @@ body {
       .card-banner .price {
         font-size: 4rem;
       }
+      .card-banner .non-plan-price {
+        font-size: 3rem;
+       }
       .card-body .plan-name {
           display: none;
       }
@@ -174,4 +181,10 @@ body {
       }
 }
 
+.fa-check {
+    color: #28a745;
+}
 
+.fa-remove {
+    color: #dc3545;
+}

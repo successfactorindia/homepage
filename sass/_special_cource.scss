@@ -74,9 +74,6 @@
                 margin-top: 25px;
                 margin-bottom: 10px;
                 @include transform_time(0.1s);
-                &:hover{
-                    color: $btn_bg;
-                }
                 @media #{$small_mobile} {
                     margin-top: 15px;
                     margin-bottom: 10px;

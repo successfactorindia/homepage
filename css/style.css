@@ -3084,9 +3084,6 @@ section#about {
   -webkit-transition: 0.1s;
   transition: 0.1s;
 }
-.special_cource .single_special_cource .special_cource_text h3:hover {
-  color: #ff663b;
-}
 @media (max-width: 576px) {
   .special_cource .single_special_cource .special_cource_text h3 {
     margin-top: 15px;

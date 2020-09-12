@@ -2096,8 +2096,8 @@ ul {
     top: 110px;
     width: 50%;
     height: 69%;
-    max-width: 38%;
-    max-height: 50%;
+    max-width: 100%;
+    max-height: 100%;
     content: "";
     background-image: url(../img/banner_img.png);
     background-size: contain;
@@ -2112,8 +2112,8 @@ ul {
   .banner_part:after {
     position: absolute;
     top: 110px;
-    max-width: 45%;
-    max-height: 35%;
+    max-width: 100%;
+    max-height: 100%;
     content: "";
     background-image: url(../img/banner_img.png);
     background-size: contain;
@@ -2136,6 +2136,37 @@ ul {
     bottom: 0;
     top: auto;
     background-repeat: no-repeat;
+  }
+}
+.banner_part .whatsapp {
+  position: fixed;
+  color: white;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  right: 25px;
+  bottom: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 6px 6px;
+  z-index: 100;
+  background-color: #28a745;
+}
+@media (max-width: 576px) {
+  .banner_part .whatsapp {
+    width: 32px;
+    height: 32px;
+    right: 10px;
+    bottom: 20px;
+  }
+}
+.banner_part .whatsapp i {
+  font-size: 28px;
+}
+@media (max-width: 576px) {
+  .banner_part .whatsapp i {
+    font-size: 20px;
   }
 }
 

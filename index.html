@@ -40,7 +40,6 @@
     <!-- themify CSS -->
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <!-- flaticon CSS -->
     <link rel="stylesheet" href="css/flaticon.css">
     <!-- font awesome CSS -->
@@ -84,7 +83,10 @@
                                     <a class="nav-link" href="#contact">Contact</a>
                                 </li>
                                 <li class="d-none d-lg-block">
-                                    <button onclick="scrollToPlans()" class="btn_1">Book Now</button>
+                                    <a class="btn_1 book_now_standard" href="https://imjo.in/jKAcC8">
+                                        Book Now 
+                                    </a>
+                                    <!-- <button onclick="scrollToPlans()" class="btn_1">Book Now</button> -->
                                 </li>
                             </ul>
                         </div>
@@ -108,7 +110,9 @@
                             <br/>
                             <p>Exams Covered: <b>UPSC, PSC, SSC, Bank PO, PSUs, LIC, RRB NTPC, RBI, SI</b> and many more hidden exams</p>
                             <p class="limited_seats"></p>
-                            <button class="btn_1" onclick="scrollToPlans()">Book Now</button>
+                            <a class="btn_1 book_now_standard" href="https://imjo.in/jKAcC8">
+                                Book Now
+                            </a>
                             <a href="https://wa.link/65ar60" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
                             <br/>
                         </div>
@@ -447,24 +451,24 @@
 		<!-- 	Personal Card	 -->
 		<div class="card">
 			<div class="card-banner">
-				<p class="plan-tag">Standard</p>
+				<p class="plan-tag">Personal</p>
 				<div class="plan-price">
 					<h2 class="price"><b style="font-weight: 700">999</b><br><span class="non-plan-price" style="text-decoration: line-through;">5,000</span></h2>
                     <p class="price-month">Early Bird Discount</p>
 				</div>
 			</div>
 			<div class="card-body">
-				<h3 class="plan-name">Standard</h3>
+				<h3 class="plan-name">Personal</h3>
 				<ul class="plan-feature-list">
 					<li class="plan-feature"><b><i class="fa fa-check"></i> 20+ Government Officers</b></li>
 					<li class="plan-feature"><b><i class="fa fa-check"></i> 20+ Government Exams</b></li>
                     <li class="plan-feature"><b><i class="fa fa-check"></i> Daily Q&A sessions</b></li>
                     <li class="plan-feature"><b><i class="fa fa-check"></i> 5000+ Student Network</b></li>
-                    <li class="plan-feature"><b><i class="fa fa-remove"></i> 40 Mins 1-to-1 Mentoring</b></li>
-                    <li class="plan-feature"><b><i class="fa fa-remove"></i> Mock Interview</b></li>
+                    <li class="plan-feature"><b><i class="fa fa-check"></i> 40 Mins 1-to-1 Mentoring</b></li>
+                    <li class="plan-feature"><b><i class="fa fa-check"></i> Mock Interview</b></li>
 				</ul>
                 <a class="btn_1 book_now_standard" href="https://imjo.in/jKAcC8">
-                    Book Now 
+                    Book Now
                 </a>
 			</div>
 			<!--     end of card body     -->
@@ -493,7 +497,7 @@
 		<!-- </div> -->
 		<!--    end of card -->  
 		<!-- 	Premium Card / Business	 -->
-		<div class="card">
+		<!-- <div class="card">
 			<div class="card-banner">
 				<p class="plan-tag">Personal</p>
 				<div class="plan-price">
@@ -513,8 +517,7 @@
                 </ul>
 				<a class="btn_1 book_now_personal" href="https://imjo.in/yVnWM6">Book Now</a>
 			</div>
-			<!--     end of card body     -->
-		</div>
+		</div> -->
 		<!--    end of card    -->
 	</div>
     <!-- END OF WRAPPER   -->
@@ -840,26 +843,25 @@
     <script src="js/waypoints.min.js"></script>
     <script src="js/custom.js"></script>
     <script>
-        function scrollToPlans() {
-          var elmnt = document.getElementById("purchase-plans");
-          elmnt.scrollIntoView();
-        }
+        // function scrollToPlans() {
+        //   var elmnt = document.getElementById("purchase-plans");
+        //   elmnt.scrollIntoView();
+        // }
         
-        const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
-
         $('.book_now_standard').on('click', function() {
-            const bookNowButton = document.getElementsByClassName('book_now_standard')[0];
+            const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
+            const bookNowButton = this;
             const oldText = bookNowButton.innerHTML;
             bookNowButton.innerHTML = loading;
             setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
         });
 
-        $('.book_now_personal').on('click', function() {
-            const bookNowButton = document.getElementsByClassName('book_now_personal')[0];
-            const oldText = bookNowButton.innerHTML;
-            bookNowButton.innerHTML = loading;
-            setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
-        });
+        // $('.book_now_personal').on('click', function() {
+        //     const bookNowButton = document.getElementsByClassName('book_now_personal')[0];
+        //     const oldText = bookNowButton.innerHTML;
+        //     bookNowButton.innerHTML = loading;
+        //     setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
+        // });
 
 
         (function() {

@@ -413,12 +413,11 @@ ul {
   text-transform: capitalize;
   background-size: 200% auto;
   border: 1px solid transparent;
-  box-shadow: 0px 12px 20px 0px rgba(255, 126, 95, 0.15);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .btn_1:hover {
   color: #fff !important;
   background-position: right center;
-  box-shadow: 0px 10px 30px 0px rgba(193, 34, 10, 0.2);
 }
 @media (max-width: 576px) {
   .btn_1 {
@@ -1994,10 +1993,10 @@ ul {
   font-size: 15px;
   line-height: 1.8;
   font-family: "Roboto", sans-serif;
-  color: #777777;
+  color: #000000cf;
 }
 .banner_part .banner_text .btn_1 {
-  box-shadow: 0px 12px 20px 0px rgba(255, 126, 95, 0.15);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   margin-top: 50px;
   padding: 13.5px 45px;
 }
@@ -2033,6 +2032,7 @@ ul {
   margin-top: 50px;
   padding: 13px 46px;
   margin-left: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 @media (max-width: 576px) {
   .banner_part .banner_text .btn_2 {
@@ -2139,6 +2139,7 @@ ul {
   }
 }
 .banner_part .whatsapp {
+  opacity: 0.9;
   position: fixed;
   color: white;
   width: 40px;
@@ -2152,24 +2153,16 @@ ul {
   padding: 6px 6px;
   z-index: 100;
   background-color: #28a745;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 @media (max-width: 576px) {
   .banner_part .whatsapp {
-    width: 32px;
-    height: 32px;
     right: 10px;
-    bottom: 20px;
   }
 }
 .banner_part .whatsapp i {
   font-size: 28px;
 }
-@media (max-width: 576px) {
-  .banner_part .whatsapp i {
-    font-size: 20px;
-  }
-}
-
 /**************** hero part css end ****************/
 /**************** about css start ****************/
 section#about {
@@ -3056,6 +3049,7 @@ section#about {
 }
 .special_cource .single_special_cource {
   margin-bottom: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .special_cource .single_special_cource .special_img {
   width: 365px;

@@ -9,7 +9,7 @@
     background-position: top right;
 
     @media #{$small_mobile}{
-        height: 600px;
+        height: 750px;
         background-image: none;
         background-color: #f7f7f7;
     }
@@ -37,16 +37,20 @@
             display: table-cell;
             vertical-align: middle;
             @media #{$small_mobile}{
-                vertical-align: bottom;
+                display: block;
+                vertical-align: middle;
             }
             @media #{$large_mobile}{
-                vertical-align: bottom;
+                display: block;
+                vertical-align: middle;
             }
             @media #{$tab_device}{
-                vertical-align: bottom;
+                display: block;
+                vertical-align: middle;
             }
             @media #{$medium_device}{
-                vertical-align: bottom;
+                // display: block;
+                vertical-align: middle;
             }
         }
         @media #{$small_mobile}{
@@ -165,74 +169,74 @@
             }
         }
     }
-    &:after{
-        position: absolute;
-        top: 163px;
-        width: 45%;
-        height: 50%;
-        content: "";
-        background-image: url(../img/banner_img.png);
-        background-size: 100% 100%;
-        right: 9%;
-        @media #{$small_mobile}{
-            position: absolute;
-            top: 85px;
-            width: 45%;
-            height: 60%;
-            max-width: 100%;
-            max-height: 100%;
-            content: "";
-            background-image: url(../img/banner_img.png);
-            background-size: contain;
-            right: 0;
-            left: 0;
-            text-align: center;
-            margin: 0 auto;
-            background-repeat: no-repeat;
-        }
-        @media #{$large_mobile}{
-            position: absolute;
-            top: 110px;
-            width: 50%;
-            height: 69%;
-            max-width: 100%;
-            max-height: 100%;
-            content: "";
-            background-image: url(../img/banner_img.png);
-            background-size: contain;
-            right: 0;
-            left: 0;
-            text-align: center;
-            margin: 0 auto;
-            background-repeat: no-repeat;
-        }
-        @media #{$tab_device}{
-            position: absolute;
-            top: 110px;
-            max-width: 100%;
-            max-height: 100%;
-            content: "";
-            background-image: url(../img/banner_img.png);
-            background-size: contain;
-            right: 0;
-            left: 0;
-            text-align: center;
-            margin: 0 auto;
-            background-repeat: no-repeat;
-        }
-        @media #{$medium_device}{
-            position: absolute;
-            max-width: 100%;
-            max-height: 100%;
-            content: "";
-            background-image: url(../img/banner_img.png);
-            background-size: contain;
-            right: 5%;
-            bottom: 0;
-            top: auto;
-            background-repeat: no-repeat;
-        }
-    }
+    // &:after{
+    //     position: absolute;
+    //     top: 163px;
+    //     width: 45%;
+    //     height: 50%;
+    //     content: "";
+    //     // background-image: url(../img/banner_img.png);
+    //     background-size: 100% 100%;
+    //     right: 9%;
+    //     @media #{$small_mobile}{
+    //         position: absolute;
+    //         top: 85px;
+    //         width: 45%;
+    //         height: 60%;
+    //         max-width: 100%;
+    //         max-height: 100%;
+    //         content: "";
+    //         // background-image: url(../img/banner_img.png);
+    //         background-size: contain;
+    //         right: 0;
+    //         left: 0;
+    //         text-align: center;
+    //         margin: 0 auto;
+    //         background-repeat: no-repeat;
+    //     }
+    //     @media #{$large_mobile}{
+    //         position: absolute;
+    //         top: 110px;
+    //         width: 50%;
+    //         height: 69%;
+    //         max-width: 100%;
+    //         max-height: 100%;
+    //         content: "";
+    //         // background-image: url(../img/banner_img.png);
+    //         background-size: contain;
+    //         right: 0;
+    //         left: 0;
+    //         text-align: center;
+    //         margin: 0 auto;
+    //         background-repeat: no-repeat;
+    //     }
+    //     @media #{$tab_device}{
+    //         position: absolute;
+    //         top: 110px;
+    //         max-width: 100%;
+    //         max-height: 100%;
+    //         content: "";
+    //         // background-image: url(../img/banner_img.png);
+    //         background-size: contain;
+    //         right: 0;
+    //         left: 0;
+    //         text-align: center;
+    //         margin: 0 auto;
+    //         background-repeat: no-repeat;
+    //     }
+    //     @media #{$medium_device}{
+    //         position: absolute;
+    //         max-width: 100%;
+    //         max-height: 100%;
+    //         content: "";
+    //         // background-image: url(../img/banner_img.png);
+    //         background-size: contain;
+    //         right: 5%;
+    //         bottom: 0;
+    //         top: auto;
+    //         background-repeat: no-repeat;
+    //     }
+    // }
 
     .whatsapp {
         opacity: 0.9;

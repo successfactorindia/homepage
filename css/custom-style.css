@@ -3,7 +3,8 @@
     --clr-gray-lightmed: #a2a9ab;
     --clr-gray-med: #616b74;
     --clr-gray-dark: #414b56;
-    --clr-primary: #2460fc;
+    --clr-primary: #f9b700;
+    --plyr-color-main: rgba(51, 170, 51, .1);
     }
 /* 
 
@@ -187,4 +188,37 @@ body {
 
 .fa-remove {
     color: #dc3545;
+}
+
+#ytplayer {
+  width: 600px;
+  height: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+  #ytplayer {
+    width: 300px;
+    height: 150px;
+  }
+}
+
+.hero-section {
+  margin-top: -70px;
+  flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 1250px) { 
+  .hero-section {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero-video {
+    margin: 70px auto 10px auto;
+  }
+  .hero-section {
+    margin-top: 0px;
+    flex-direction: row;
+  }
 }

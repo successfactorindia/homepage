@@ -40,6 +40,7 @@
     <!-- themify CSS -->
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
     <!-- flaticon CSS -->
     <link rel="stylesheet" href="css/flaticon.css">
     <!-- font awesome CSS -->
@@ -100,7 +101,17 @@
     <!-- banner part start-->
     <section id="home" class="banner_part">
         <div class="container">
-            <div class="row align-items-center">
+            <div class=" hero-section row align-items-center">
+                <div class="hero-video col-lg-6 col-xl-6">
+                    <div class="plyr__video-embed" id="player">
+                        <iframe
+                        src="https://youtu.be/embed/a24rVP5qCKk?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                        allowfullscreen
+                        allowtransparency
+                        allow="autoplay"
+                        ></iframe>
+                    </div>
+                </div>
                 <div class="col-lg-6 col-xl-6">
                     <div class="banner_text">
                         <div class="banner_text_iner">
@@ -406,13 +417,16 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+    <script src="https://unpkg.com/plyr@3"></script>
     <script src="js/custom.js"></script>
     <script>
         // function scrollToPlans() {
         //   var elmnt = document.getElementById("purchase-plans");
         //   elmnt.scrollIntoView();
         // }
-        
+        const player = new Plyr('#player', {});
+
         $('.book_now_standard').on('click', function() {
             const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
             const bookNowButton = this;

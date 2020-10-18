@@ -1864,21 +1864,21 @@ ul {
 }
 @media (max-width: 576px) {
   .banner_part {
-    height: 750px;
+    height: 1250px;
     background-image: none;
     background-color: #f7f7f7;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .banner_part {
-    height: 750px;
+    height: 1250px;
     background-image: none;
     background-color: #f7f7f7;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_part {
-    height: 750px;
+    height: 1250px;
     background-image: none;
     background-color: #f7f7f7;
   }
@@ -1924,26 +1924,26 @@ ul {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 640px;
+    height: 500px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 750px;
+    height: 500px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 750px;
+    height: 500px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .banner_part .banner_text {
-    height: 650px;
+    height: 500px;
   }
 }
 .banner_part .banner_text h5 {

@@ -159,35 +159,33 @@ body {
 
  @media only screen and (max-width: 768px) {
     .card {
-        min-width: 300px;
-        box-shadow: 0px 2px 4px var(--clr-gray-lightmed);
-      }
-
-      .card-body {
-          padding: 0rem;
-          margin: 1.2rem 0;
-      }
-
-      .card-banner .price {
-        font-size: 4rem;
-      }
-      .card-banner .non-plan-price {
-        font-size: 3rem;
-       }
-      .card-body .plan-name {
-          display: none;
-      }
-      .card-body .plan-feature-list {
-        margin: 1rem 4rem;
-      }
+      min-width: 300px;
+      box-shadow: 0px 2px 4px var(--clr-gray-lightmed);
+    }
+    .card-body {
+      padding: 0rem;
+      margin: 1.2rem 0;
+    }
+    .card-banner .price {
+      font-size: 4rem;
+    }
+    .card-banner .non-plan-price {
+      font-size: 3rem;
+    }
+    .card-body .plan-name {
+      display: none;
+    }
+    .card-body .plan-feature-list {
+      margin: 1rem 4rem;
+    }
 }
 
 .fa-check {
-    color: #28a745;
+  color: #28a745;
 }
 
 .fa-remove {
-    color: #dc3545;
+  color: #dc3545;
 }
 
 #ytplayer {
@@ -234,7 +232,6 @@ body {
 }
 
 @media only screen and (max-width: 991px) {
-  
   .hero-video {
     margin: 70px auto 10px auto;
   }
@@ -250,12 +247,60 @@ body {
     height: 500px;
     margin-top: 0px;
   }
-
   .video_container{
     width: 100%;
     height: 60%;
     max-width: 350px;
     max-height: 200px;
   }
-  
+}
+
+.form-input-material {
+  padding-top: 20px
+}
+
+.form-input-material > label {
+  width: 200px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.reg-btn {
+  margin-top: 20px;
+  float: right;
+  border-radius: 28px;
+  padding: 10.5px 36px;
+}
+
+.login-form {
+  width: 400px;
+  height: 500px;
+  background: #e6e6e6;
+  border-radius: 8px;
+  box-shadow: 0 0 40px -10px #000;
+  margin: calc(50vh - 320px) auto;
+  padding: 20px 30px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.form-input-material > input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+  border-bottom: 2px solid #bebed2;
+}
+
+.login-form > .form-title {
+  margin: 10px 0;
+  padding-bottom: 10px;
+  width: 200px;
+  border-bottom: 3px solid #78788c;
 }

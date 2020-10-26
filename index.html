@@ -29,6 +29,8 @@
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
 
+    <!-- Share this icons -->
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5f95fc1a2a2baa0012f7f175&product=inline-share-buttons" async="async"></script>
 
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
@@ -52,7 +54,6 @@
     <!-- custom style CSS -->
     <link rel="stylesheet" href="css/custom-style.css">
 </head>
-
 
 <body>
     <!--::header part start::-->
@@ -83,12 +84,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#contact">Contact</a>
                                 </li>
-                                <li class="d-none d-lg-block">
+                                <!-- <li class="d-none d-lg-block">
                                     <a class="btn_1 book_now_standard" href="https://forms.gle/9GGAb5caREs7eF1G7">
                                         Register
                                     </a>
-                                    <!-- <button onclick="scrollToPlans()" class="btn_1">Book Now</button> -->
-                                </li>
+                                    <button onclick="scrollToPlans()" class="btn_1">Book Now</button>
+                                </li> -->
                             </ul>
                         </div>
                     </nav>
@@ -122,16 +123,31 @@
                             </div>
                         </div>
                             <p class="limited_seats"></p>
-                            <a class="btn_1 book_now_standard" href="https://forms.gle/9GGAb5caREs7eF1G7">
-                                Book Now
-                            </a>
+                            <!-- <a class="btn_1 book_now_standard" href="https://forms.gle/9GGAb5caREs7eF1G7"> -->
+                                <!-- Book Now -->
+                            <!-- </a> -->
                             <a href="https://wa.link/65ar60" class="whatsapp"><i class="fa fa-whatsapp"></i></a>
                             <br/>
                         </div>
                     </div>
                 </div>
                 <div class="hero-form col-lg-6 col-xl-6">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <form name="gform" id="gform" class="login-form" onsubmit="" action="javascript: postToGoogle()" autocomplete="on">
+                        <h1 class="form-title">Free Registration</h1>
+                        <div class="form-input-material">
+                           <label for="name">Name</label>
+                          <input type="text" name="entry.1215479571" id="name" placeholder="Your full name" class="form-control-material" required />
+                        </div>
+                        <div class="form-input-material">
+                            <label for="phone">Phone number</label>
+                          <input type="number" name="entry.621873637" id="phone" placeholder="Your contact number" class="form-control-material" required />
+                        </div>
+                        <div class="form-input-material">
+                            <label for="email">Email</label>
+                            <input type="text" name="entry.1910878951" id="email" placeholder="Your contact email" class="form-control-material"/>
+                        </div>
+                        <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
+                      </form>
                 </div>
             </div>
         </div>
@@ -309,8 +325,6 @@
         </div>
     </section> -->
     <!-- learning part end-->
-
-
 
     <!--::review_part start::-->
     <section id="speakers" class="special_cource padding_top">
@@ -843,8 +857,6 @@
         </div>
     </footer>
     <!-- footer part end-->
-
-
     <script src="js/jquery-1.12.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -860,13 +872,8 @@
     <script src="https://unpkg.com/plyr@3"></script>
     <script src="js/custom.js"></script>
     <script>
-        // function scrollToPlans() {
-        //   var elmnt = document.getElementById("purchase-plans");
-        //   elmnt.scrollIntoView();
-        // }
-
         const player = new Plyr('#player', {});
-        
+
         $('.book_now_standard').on('click', function() {
             const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
             const bookNowButton = this;
@@ -875,19 +882,40 @@
             setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
         });
 
-        // $('.book_now_personal').on('click', function() {
-        //     const bookNowButton = document.getElementsByClassName('book_now_personal')[0];
-        //     const oldText = bookNowButton.innerHTML;
-        //     bookNowButton.innerHTML = loading;
-        //     setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
-        // });
-
-
         (function() {
-            const users = 45 + ((new Date().getDate() % 10) * 3);
-            document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students bought yesterday`
+            const users = 35 + ((new Date().getDate() % 10) * 3);
+            document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
         })();
+
+        function postToGoogle() {
+            var name = $('input#name').val();
+            var phone = $('input#phone').val();
+            var email = $('input#email').val();
+
+            $.ajax({
+                url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
+                data: {
+                    "entry.1215479571": name,
+                    "entry.621873637": phone,
+                    ...email != null && email != '' ? {"entry.1910878951": email} : {}
+                },
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: function() {
+                        $('#gform *').fadeOut(100);
+                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get link to attend online conference, on 20th November. We wish you all the success in the world.</h5><div class="sharethis-inline-share-buttons"></div>');
+                    },
+                    200: function() {
+                        $('#gform *').fadeOut(100);
+                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get link to attend online conference, on 20th November. We wish you all the success in the world.</h5><div class="sharethis-inline-share-buttons"></div>');
+                    }
+                }
+            });
+        };
+
     </script>
 </body>
 
 </html>
+

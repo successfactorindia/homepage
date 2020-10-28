@@ -9,17 +9,17 @@
     background-position: top right;
 
     @media #{$small_mobile}{
-        height: 750px;
+        height: 1250px;
         background-image: none;
         background-color: #f7f7f7;
     }
     @media #{$large_mobile}{
-        height: 750px;
+        height: 1250px;
         background-image: none;
         background-color: #f7f7f7;
     }
     @media #{$tab_device}{
-        height: 750px;
+        height: 1250px;
         background-image: none;
         background-color: #f7f7f7;
     }

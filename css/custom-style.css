@@ -1,18 +1,11 @@
 :root {
-    --clr-gray-light: #d7dfe2;
-    --clr-gray-lightmed: #a2a9ab;
-    --clr-gray-med: #616b74;
-    --clr-gray-dark: #414b56;
-    --clr-primary: #f9b700;
-    --plyr-color-main: rgba(51, 170, 51, .1);
-    }
-/* 
-
-svg {
-  display: block;
-  position: fixed;
-  left: 0;
-} */
+  --clr-gray-light: #d7dfe2;
+  --clr-gray-lightmed: #a2a9ab;
+  --clr-gray-med: #616b74;
+  --clr-gray-dark: #414b56;
+  --clr-primary: #f9b700;
+  --plyr-color-main: rgba(51, 170, 51, .1);
+}
 
 path {
   fill: var(--clr-primary);
@@ -24,11 +17,6 @@ path {
 
 .wave-bottom {
   bottom: 0;
-}
-
-body {
-  /* margin: 2rem;
-  color: var(--clr-gray-med); */
 }
 
 .wrapper {
@@ -303,4 +291,12 @@ body {
   padding-bottom: 10px;
   width: 200px;
   border-bottom: 3px solid #78788c;
+}
+
+.sharethis-inline-share-buttons {
+  margin-top: 20px;
+}
+
+.color-text-orange {
+  color: #ff663b; 
 }

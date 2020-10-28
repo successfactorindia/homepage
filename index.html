@@ -107,7 +107,7 @@
                     <div class="banner_text">
                         <div class="banner_text_iner">
                             <h1>Government Exam Summit</h1>
-                            <h3><b>21 - 22 Nov 2020</b></h3>
+                            <h3><b>5 - 6 Dec 2020</b></h3>
                             <p>Learn directly from India's <strong>16+ Government Officers</strong></p>
                             <br/>
                             <p><b>UPSC, PSC, SSC, Bank PO, PSUs, LIC, RRB NTPC, RBI, SI</b> and many more hidden exams</p>
@@ -885,7 +885,9 @@
         (function() {
             const users = 35 + ((new Date().getDate() % 10) * 3);
             document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
+            setTimeout(() => $('.whatsapp').show(), 1000);
         })();
+
 
         function postToGoogle() {
             var name = $('input#name').val();
@@ -904,11 +906,11 @@
                 statusCode: {
                     0: function() {
                         $('#gform *').fadeOut(100);
-                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get link to attend online conference, on 20th November. We wish you all the success in the world.</h5><div class="sharethis-inline-share-buttons"></div>');
+                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6><div class="sharethis-inline-share-buttons"></div>');
                     },
                     200: function() {
                         $('#gform *').fadeOut(100);
-                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get link to attend online conference, on 20th November. We wish you all the success in the world.</h5><div class="sharethis-inline-share-buttons"></div>');
+                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6><div class="sharethis-inline-share-buttons"></div>');
                     }
                 }
             });

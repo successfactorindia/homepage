@@ -1864,21 +1864,21 @@ ul {
 }
 @media (max-width: 576px) {
   .banner_part {
-    height: 1250px;
+    height: 750px;
     background-image: none;
     background-color: #f7f7f7;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .banner_part {
-    height: 1250px;
+    height: 750px;
     background-image: none;
     background-color: #f7f7f7;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_part {
-    height: 1250px;
+    height: 750px;
     background-image: none;
     background-color: #f7f7f7;
   }
@@ -1924,26 +1924,26 @@ ul {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 500px;
+    height: 640px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 500px;
+    height: 750px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 500px;
+    height: 750px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .banner_part .banner_text {
-    height: 500px;
+    height: 650px;
   }
 }
 .banner_part .banner_text h5 {
@@ -2066,6 +2066,7 @@ ul {
   }
 }
 .banner_part .whatsapp {
+  display: none;
   opacity: 0.9;
   position: fixed;
   color: white;
@@ -2081,6 +2082,7 @@ ul {
   z-index: 100;
   background-color: #28a745;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  transition: ease-in;
 }
 @media (max-width: 576px) {
   .banner_part .whatsapp {

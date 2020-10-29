@@ -233,6 +233,7 @@ path {
   .hero-form {
     width: 400px;
     height: 500px;
+    margin: auto;
     margin-top: 0px;
   }
   .video_container{
@@ -240,6 +241,7 @@ path {
     height: 60%;
     max-width: 350px;
     max-height: 200px;
+    margin: auto;
   }
 }
 
@@ -262,11 +264,11 @@ path {
 
 .login-form {
   width: 400px;
-  height: 500px;
+  height: 600px;
   background: #e6e6e6;
   border-radius: 8px;
-  box-shadow: 0 0 40px -10px #000;
-  margin: calc(50vh - 320px) auto;
+  box-shadow: 0px 4px 20px -8px #000;
+  margin: 45px 160px;
   padding: 20px 30px;
   max-width: calc(100vw - 40px);
   box-sizing: border-box;
@@ -299,4 +301,45 @@ path {
 
 .color-text-orange {
   color: #ff663b; 
+}
+
+.nice-select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+  border-bottom: 2px solid #bebed2;
+}
+
+.nice-select .list {
+  max-height: 180px;
+  overflow: scroll;
+}
+
+.color-red {
+  color:#ff0000b3;
+}
+
+.member_counter > .container > .row {
+  margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 991px) {
+  .login-form {
+    margin: 0px;
+  }
+
+  .nice-select .list {
+    max-height: 150px;
+    overflow: scroll;
+  }
+
+  .member_counter > .container > .row {
+    margin-bottom: 0px;
+  }
 }

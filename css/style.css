@@ -1893,57 +1893,69 @@ ul {
   width: 100%;
   height: 880px;
 }
-.banner_part .banner_text .banner_text_iner {
+.banner_part .banner_text .banner_text_inner {
   display: table-cell;
   vertical-align: middle;
 }
 @media (max-width: 576px) {
-  .banner_part .banner_text .banner_text_iner {
+  .banner_part .banner_text .banner_text_inner {
     display: block;
     vertical-align: middle;
+  }
+  .banner_part .banner_text .banner_text_inner p {
+    margin: auto;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .banner_part .banner_text .banner_text_iner {
+  .banner_part .banner_text .banner_text_inner {
     display: block;
     vertical-align: middle;
+  }
+  .banner_part .banner_text .banner_text_inner p {
+    margin: auto;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .banner_part .banner_text .banner_text_iner {
+  .banner_part .banner_text .banner_text_inner {
     display: block;
     vertical-align: middle;
   }
+  .banner_part .banner_text .banner_text_inner p {
+    margin: auto;
+  }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
-  .banner_part .banner_text .banner_text_iner {
+  .banner_part .banner_text .banner_text_inner {
     vertical-align: middle;
+  }
+  .banner_part .banner_text .banner_text_inner p {
+    margin: auto;
   }
 }
 @media (max-width: 576px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 640px;
+    height: 480px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 750px;
+    height: 480px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 750px;
+    height: 480px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .banner_part .banner_text {
-    height: 650px;
+    height: 480px;
   }
 }
 .banner_part .banner_text h5 {
@@ -2066,7 +2078,6 @@ ul {
   }
 }
 .banner_part .whatsapp {
-  display: none;
   opacity: 0.9;
   position: fixed;
   color: white;
@@ -2092,6 +2103,36 @@ ul {
 .banner_part .whatsapp i {
   font-size: 28px;
 }
+.banner_part .whatsapp_text {
+  opacity: 0.9;
+  position: fixed;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 8px;
+  right: 25px;
+  bottom: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 6px 6px;
+  z-index: 100;
+  background-color: #28a745;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  transition: ease-in;
+}
+@media (max-width: 576px) {
+  .banner_part .whatsapp_text {
+    right: 10px;
+  }
+}
+.banner_part .whatsapp_text > .contact_us {
+  padding-right: 12px;
+  padding-left: 4px;
+}
+.banner_part .whatsapp_text i {
+  font-size: 24px;
+}
+
 /**************** hero part css end ****************/
 /**************** about css start ****************/
 section#about {
@@ -2823,21 +2864,25 @@ section#about {
 @media (max-width: 576px) {
   .member_counter {
     padding: 50px 0px 60px;
+    margin-bottom: 30px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .member_counter {
     padding: 50px 0px 60px;
+    margin-bottom: 30px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .member_counter {
     padding: 50px 0px 60px;
+    margin-bottom: 30px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .member_counter {
     padding: 73px 0px 73px;
+    margin-bottom: 30px;
   }
 }
 .member_counter .single_member_counter {
@@ -3504,7 +3549,7 @@ section#about {
 }
 @media (max-width: 991px) {
   .footer-area {
-    padding: 70px 0px 30px;
+    padding: 10px 0px 30px;
   }
 }
 .footer-area .form-control {
@@ -5218,7 +5263,7 @@ h6 {
 }
 @media (max-width: 991px) {
   .footer-area {
-    padding: 70px 0px 30px;
+    padding: 10px 0px 30px;
   }
 }
 .footer-area .form-control {

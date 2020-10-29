@@ -1924,26 +1924,26 @@ ul {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 640px;
+    height: 480px;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 750px;
+    height: 480px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_part .banner_text {
     text-align: center;
     padding-top: 0px;
-    height: 750px;
+    height: 480px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .banner_part .banner_text {
-    height: 650px;
+    height: 480px;
   }
 }
 .banner_part .banner_text h5 {
@@ -2092,6 +2092,7 @@ ul {
 .banner_part .whatsapp i {
   font-size: 28px;
 }
+
 /**************** hero part css end ****************/
 /**************** about css start ****************/
 section#about {

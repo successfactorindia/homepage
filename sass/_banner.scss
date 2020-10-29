@@ -180,7 +180,6 @@
     }
 
     .whatsapp {
-        display: none;
         opacity: 0.9; 
         position: fixed;
         color: white;
@@ -204,6 +203,36 @@
 
     .whatsapp i {
         font-size: 28px;
+    }
+
+    .whatsapp_text {
+        opacity: 0.9; 
+        position: fixed;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 8px;
+        right: 25px;
+        bottom: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 6px 6px;
+        z-index: 100;
+        background-color: #28a745;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        transition: ease-in;
+        @media #{$small_mobile}{
+            right: 10px;
+        }
+    }
+
+    .whatsapp_text > .contact_us {
+        padding-right: 12px;
+        padding-left: 4px;
+    }
+
+    .whatsapp_text i {
+        font-size: 24px;
     }
 }
   

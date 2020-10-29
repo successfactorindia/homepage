@@ -5,18 +5,22 @@
 
     @media #{$small_mobile} {
         padding: 50px 0px 60px;
+        margin-bottom: 30px;
     }
 
     @media #{$large_mobile} {
         padding: 50px 0px 60px;
+        margin-bottom: 30px;
     }
 
     @media #{$tab_device} {
         padding: 50px 0px 60px;
+        margin-bottom: 30px;
     }
 
     @media #{$medium_device} {
         padding: 73px 0px 73px;
+        margin-bottom: 30px;
     }
 
     .single_member_counter {

@@ -779,7 +779,10 @@
 
         const users = 35 + ((new Date().getDate() % 10) * 3);
         document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
-        setTimeout(() => $('.whatsapp').show(), 1000);
+        setTimeout(() =>{
+            $('.whatsapp').prepend('<span class="contact_us">Contact Us</span>')
+            $('.whatsapp').toggleClass("whatsapp whatsapp_text")
+        }, 60000);
 
         function getTimeRemaining(endtime){
             const total = Date.parse(endtime) - Date.parse(new Date());

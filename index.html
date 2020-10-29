@@ -48,10 +48,12 @@
     <link rel="stylesheet" href="css/magnific-popup.css">
     <!-- swiper CSS -->
     <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/nice-select.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- custom style CSS -->
     <link rel="stylesheet" href="css/custom-style.css">
+
 </head>
 
 <body>
@@ -72,18 +74,18 @@
                         id="navbarSupportedContent">
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index">Home</a>
+                                <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about">About</a>
+                                <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="dropdown nav-item">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: inherit;">Government Education Summit
                                 <span class="caret"></span></a>
                                 <ul class="dropdown-menu nav-item">
-                                  <li><a class="nav-link" href="overview">Overview</a></li>
-                                  <li><a class="nav-link" href="speakers">Speakers</a></li>
-                                  <li><a class="nav-link" href="presentations">Recorded Presentations</a></li>
+                                  <li><a class="nav-link" href="overview.html">Overview</a></li>
+                                  <li><a class="nav-link" href="speakers.html">Speakers</a></li>
+                                  <li><a class="nav-link" href="presentations.html">Recorded Presentations</a></li>
                                 </ul>
                               </li>
                             <!-- <li class="nav-item">
@@ -110,7 +112,7 @@
             <div class="hero-form-section row align-items-center">
                 <div class="hero-info col-lg-6 col-xl-6">
                     <div class="banner_text">
-                        <div class="banner_text_iner">
+                        <div class="banner_text_inner">
                             <h1>Government Exam Summit</h1>
                             <h3><b>5 - 6 Dec 2020</b></h3>
                             <p>Learn directly from India's <strong>16+ Government Officers</strong></p>
@@ -140,16 +142,32 @@
                     <form name="gform" id="gform" class="login-form" onsubmit="" action="javascript: postToGoogle()" autocomplete="on">
                         <h1 class="form-title">Free Registration</h1>
                         <div class="form-input-material">
-                           <label for="name">Name</label>
+                           <label for="name">Full Name<span class="color-red"> *</span></label>
                           <input type="text" name="entry.1215479571" id="name" placeholder="Your full name" class="form-control-material" required />
                         </div>
                         <div class="form-input-material">
-                            <label for="phone">Phone number</label>
+                            <label for="phone">Phone number<span class="color-red"> *</span></label>
                           <input type="number" name="entry.621873637" id="phone" placeholder="Your contact number" class="form-control-material" required />
                         </div>
                         <div class="form-input-material">
                             <label for="email">Email</label>
                             <input type="text" name="entry.1910878951" id="email" placeholder="Your contact email" class="form-control-material"/>
+                        </div>
+                        <div class="form-input-material">
+                            <label for="exam">Preparing for which exam?</label>
+                            <select id="exam" class="wide">
+                                <option value="All">Select an exam</option>
+                                <option value="UPSC">UPSC</option>
+                                <option value="PSC">PSC</option>
+                                <option value="SSC">SSC</option>
+                                <option value="Bank_PO">Bank PO</option>
+                                <option value="PSUs">PSUs</option>
+                                <option value="LIC">LIC</option>
+                                <option value="RRB_NTPC">RRB NTPC</option>
+                                <option value="RBI">RBI</option>
+                                <option value="SI">SI</option>
+                                <option value="Other">Other</option>
+                              </select>
                         </div>
                         <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
                       </form>
@@ -161,6 +179,14 @@
     <!-- member_counter counter start -->
     <section class="member_counter">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="single_member_counter launchCountDown">
+                        <span class="counter"></span>
+                        <h4>Days till Summit</h4>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_member_counter">
@@ -739,6 +765,9 @@
     <script src="js/custom.js"></script>
     <script>
         const player = new Plyr('#player', {});
+        $(document).ready(function() {
+            $('select').niceSelect();
+        });
 
         $('.book_now_standard').on('click', function() {
             const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
@@ -748,36 +777,58 @@
             setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
         });
 
-        (function() {
-            const users = 35 + ((new Date().getDate() % 10) * 3);
-            document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
-            setTimeout(() => $('.whatsapp').show(), 1000);
-        })();
+        const users = 35 + ((new Date().getDate() % 10) * 3);
+        document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
+        setTimeout(() => $('.whatsapp').show(), 1000);
 
+        function getTimeRemaining(endtime){
+            const total = Date.parse(endtime) - Date.parse(new Date());
+            const seconds = Math.floor( (total/1000) % 60 );
+            const minutes = Math.floor( (total/1000/60) % 60 );
+            const hours = Math.floor( (total/(1000*60*60)) % 24 );
+            const days = Math.floor( total/(1000*60*60*24) );
+
+            return {
+                total,
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+
+        const launchDate = 'December 5 2020 10:00:00 GMT-0550';
+        document.querySelector('.launchCountDown').innerHTML = `<span class="counter">${getTimeRemaining(launchDate).days}</span><h4>Days till Summit</h4>`
+        
+        function prependShare() {
+            $('#gform').prepend('<div class="sharethis-inline-share-buttons"></div>');
+        }
+        
+        function successMessage() {
+            $('#gform *').fadeOut(100);
+            prependShare();
+            $('#gform').prepend('<h1>Registration successful!</h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</span></h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6>');
+        }
 
         function postToGoogle() {
             var name = $('input#name').val();
             var phone = $('input#phone').val();
             var email = $('input#email').val();
+            var exam = $('select#exam').val();
 
             $.ajax({
                 url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
                 data: {
                     "entry.1215479571": name,
                     "entry.621873637": phone,
-                    ...email != null && email != '' ? {"entry.1910878951": email} : {}
+                    ...email != null && email != '' ? {"entry.1910878951": email} : {},
+                    ...exam != "All" ? {"entry.2114704935": exam} : {},
                 },
                 type: "POST",
                 dataType: "xml",
                 statusCode: {
-                    0: function() {
-                        $('#gform *').fadeOut(100);
-                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6><div class="sharethis-inline-share-buttons"></div>');
-                    },
-                    200: function() {
-                        $('#gform *').fadeOut(100);
-                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6><div class="sharethis-inline-share-buttons"></div>');
-                    }
+                    0: successMessage,
+                    200: successMessage
                 }
             });
         };

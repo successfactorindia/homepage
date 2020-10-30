@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css">
     <!-- swiper CSS -->
     <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/nice-select.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- custom style CSS -->
@@ -72,18 +73,18 @@
                             id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index">Home</a>
+                                    <a class="nav-link" href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about">About</a>
+                                    <a class="nav-link" href="about.html">About</a>
                                 </li>
                                 <li class="dropdown nav-item">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="" style="color: inherit;">Government Education Summit
                                     <span class="caret"></span></a>
                                     <ul class="dropdown-menu nav-item">
-                                      <li><a class="nav-link" href="overview">Overview</a></li>
-                                      <li><a class="nav-link" href="speakers">Speakers</a></li>
-                                      <li><a class="nav-link" href="presentations">Recorded Presentations</a></li>
+                                      <li><a class="nav-link" href="overview.html">Overview</a></li>
+                                      <li><a class="nav-link" href="speakers.html">Speakers</a></li>
+                                      <li><a class="nav-link" href="presentations.html">Recorded Presentations</a></li>
                                     </ul>
                                   </li>
                                 <!-- <li class="nav-item">
@@ -109,21 +110,44 @@
         <div class="container">
             <div class="hero-form-section row align-items-center">
                 <div class="hero-info col-lg-6 col-xl-6">
-
                 <div class="hero-form col-lg-6 col-xl-6">
-                    <form name="gform" id="gform" class="login-form" onsubmit="" action="javascript: postToGoogle()" autocomplete="on" style="margin: auto;">
-                        <h1 class="form-title" style="width: auto;">Register to Access</h1>
+                    <form name="gform" id="gform" class="login-form" onsubmit="" action="javascript: postToGoogle()" autocomplete="on">
+                        <h1 class="form-title">Free Registration</h1>
                         <div class="form-input-material">
-                           <label for="name">Name</label>
+                           <label for="name">Full Name<span class="color-red"> *</span></label>
                           <input type="text" name="entry.1215479571" id="name" placeholder="Your full name" class="form-control-material" required />
                         </div>
                         <div class="form-input-material">
-                            <label for="phone">Phone number</label>
+                            <label for="phone">Phone number<span class="color-red"> *</span></label>
                           <input type="number" name="entry.621873637" id="phone" placeholder="Your contact number" class="form-control-material" required />
                         </div>
                         <div class="form-input-material">
                             <label for="email">Email</label>
                             <input type="text" name="entry.1910878951" id="email" placeholder="Your contact email" class="form-control-material"/>
+                        </div>
+                        <div class="form-input-material">
+                            <label for="exam">Preparing for which exam?</label>
+                            <select id="exam" class="wide">
+                                <option value="All">Select an exam</option>
+                                <option value="UPSC">UPSC</option>
+                                <option value="SSC">SSC</option>
+                                <option value="PSC">PSC</option>
+                                <option value="Bank_PO">Bank PO</option>
+                                <option value="PSUs">PSUs</option>
+                                <option value="LIC">LIC</option>
+                                <option value="RRB_NTPC">RRB NTPC</option>
+                                <option value="RBI">RBI</option>
+                                <option value="IBPS">IBPS</option>
+                                <option value="SI">SI</option>
+                                <option value="NIACL">NIACL</option>
+                                <option value="SBI">SBI</option>
+                                <option value="KPSC">KPSC</option>
+                                <option value="JPSC">JPSC</option>
+                                <option value="MPSC">MPSC</option>
+                                <option value="RPSC">RPSC</option>
+                                <option value="NIACL">NIACL</option>
+                                <option value="Other">Other</option>
+                              </select>
                         </div>
                         <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
                       </form>
@@ -132,15 +156,12 @@
         </div>
     </section>
 
-
     <!-- <svg class="wave-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
 		<path fill="#0099ff" fill-opacity="1" d="M0,32L60,58.7C120,85,240,139,360,176C480,213,600,235,720,202.7C840,171,960,85,1080,74.7C1200,64,1320,128,1380,160L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
 	</svg>
 	<svg class="wave-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
 		<path fill="#0099ff" fill-opacity="1" d="M0,32L40,37.3C80,43,160,53,240,53.3C320,53,400,43,480,85.3C560,128,640,224,720,229.3C800,235,880,149,960,122.7C1040,96,1120,128,1200,160C1280,192,1360,224,1400,240L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
 	</svg> -->
-
-
 
     <!-- footer part start-->
     <footer id="contact" class="footer-area">
@@ -206,7 +227,10 @@
     <script src="js/custom.js"></script>
     <script>
         const player = new Plyr('#player', {});
-
+        $(document).ready(function() {
+            $('select').niceSelect();
+        });
+    
         $('.book_now_standard').on('click', function() {
             const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
             const bookNowButton = this;
@@ -221,30 +245,31 @@
             setTimeout(() => $('.whatsapp').show(), 1000);
         })();
 
+       
+        function successMessage() {
+            $('#gform *').fadeOut(100);
+            $('#gform').prepend('<h1>Registration successful!</h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</span></h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6>');
+        }
 
         function postToGoogle() {
             var name = $('input#name').val();
             var phone = $('input#phone').val();
             var email = $('input#email').val();
+            var exam = $('select#exam').val();
 
             $.ajax({
                 url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
                 data: {
                     "entry.1215479571": name,
                     "entry.621873637": phone,
-                    ...email != null && email != '' ? {"entry.1910878951": email} : {}
+                    ...email != null && email != '' ? {"entry.1910878951": email} : {},
+                    ...exam != "All" ? {"entry.2114704935": exam} : {},
                 },
                 type: "POST",
                 dataType: "xml",
                 statusCode: {
-                    0: function() {
-                        $('#gform *').fadeOut(100);
-                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6><div class="sharethis-inline-share-buttons"></div>');
-                    },
-                    200: function() {
-                        $('#gform *').fadeOut(100);
-                        $('#gform').prepend('<h1>Registration successful!<h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6><div class="sharethis-inline-share-buttons"></div>');
-                    }
+                    0: successMessage,
+                    200: successMessage
                 }
             });
         };

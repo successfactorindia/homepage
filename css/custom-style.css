@@ -343,3 +343,11 @@ path {
     margin-bottom: 0px;
   }
 }
+
+.shareButton {
+  display: none;
+}
+
+.st-btn {
+  margin-bottom: 10px;
+}

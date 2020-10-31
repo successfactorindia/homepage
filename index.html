@@ -140,7 +140,8 @@
                         </div>
                         <div class="form-input-material">
                             <label for="exam">Preparing for which exam?</label>
-                            <select id="exam" class="wide">
+                            <input type="text" name="entry.2114704935" id="exam" placeholder="List all exams" class="form-control-material"/>
+                            <!-- <select id="exam" class="wide">
                                 <option value="All">Select an exam</option>
                                 <option value="UPSC">UPSC</option>
                                 <option value="SSC">SSC</option>
@@ -159,7 +160,7 @@
                                 <option value="MPSC">MPSC</option>
                                 <option value="RPSC">RPSC</option>
                                 <option value="Other">Other</option>
-                              </select>
+                              </select> -->
                         </div>
                         <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
                         <div class="shareButton">
@@ -746,9 +747,9 @@
     <script src="js/custom.js"></script>
     <script>
         const player = new Plyr('#player', {});
-        $(document).ready(function() {
-            $('select').niceSelect();
-        });
+        // $(document).ready(function() {
+        //     $('select').niceSelect();
+        // });
 
         $('.book_now_standard').on('click', function() {
             const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
@@ -789,7 +790,7 @@
             var name = $('input#name').val();
             var phone = $('input#phone').val();
             var email = $('input#email').val();
-            var exam = $('select#exam').val();
+            var exam = $('input#exam').val();
 
             $.ajax({
                 url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
@@ -797,7 +798,7 @@
                     "entry.1215479571": name,
                     "entry.621873637": phone,
                     ...email != null && email != '' ? {"entry.1910878951": email} : {},
-                    ...exam != "All" ? {"entry.2114704935": exam} : {},
+                    ...exam != null && exam != '' ? {"entry.2114704935": exam} : {},
                 },
                 type: "POST",
                 dataType: "xml",

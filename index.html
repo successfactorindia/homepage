@@ -12,7 +12,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
- 
         gtag('config', 'UA-176776866-1');
     </script>
 	<!-- Hotjar Tracking Code for successfactor.in -->
@@ -28,8 +27,7 @@
     </script>
 
     <!-- Share this icons -->
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5f95fc1a2a2baa0012f7f175&product=inline-share-buttons" async="async"></script>
-
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f95fdb72a2baa0012f7f176&product=sop' async='async'></script>
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -139,7 +137,7 @@
                             <input type="text" name="entry.1910878951" id="email" placeholder="Your contact email" class="form-control-material" required/>
                         </div>
                         <div class="form-input-material">
-                            <label for="exam">Preparing for which exam?</label>
+                            <label for="exam">Preparing for what exams?</label>
                             <input type="text" name="entry.2114704935" id="exam" placeholder="List all exams" class="form-control-material"/>
                             <!-- <select id="exam" class="wide">
                                 <option value="All">Select an exam</option>
@@ -441,7 +439,7 @@
                     <!-- <li class="plan-feature"><b><i class="fa fa-check"></i> 40 Mins 1-to-1 Mentoring</b></li>
                     <li class="plan-feature"><b><i class="fa fa-check"></i> Mock Interview</b></li> -->
 				</ul>
-                <a class="btn_1 book_now_standard" href="https://forms.gle/9GGAb5caREs7eF1G7">
+                <a class="btn_1 book_now_standard register_btn" href="#login-form">
                     Register
                 </a>
 			</div>
@@ -785,6 +783,10 @@
             $('#gform .shareButton').fadeIn(100);
             $('#gform .shareButton *').fadeIn(100);
         }
+
+        $(".register_btn").click(function() {
+            $('html,body').animate({scrollTop: $(".hero-form").offset().top},'fast');
+        });
 
         function postToGoogle() {
             var name = $('input#name').val();

@@ -41,7 +41,7 @@
     <!-- themify CSS -->
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+    <link rel="stylesheet" href="https://unpkg.com/plyr@3.6.2/dist/plyr.css">
     <!-- flaticon CSS -->
     <link rel="stylesheet" href="css/flaticon.css">
     <!-- font awesome CSS -->
@@ -110,11 +110,11 @@
                             <div class="video_container">
                             <div class="plyr__video-embed-conference" id="player">
                                 <iframe
-                                src="https://www.youtube.com/embed/a24rVP5qCKk?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;autoplay=1"
-                                allowfullscreen
-                                allowtransparency
-                                allow="autoplay"
-                                muted="true"
+                                    src="https://www.youtube.com/embed/a24rVP5qCKk?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;autoplay=1"
+                                    allowfullscreen
+                                    allowtransparency
+                                    allow="autoplay"
+                                    muted="true"
                                 ></iframe>
                             </div>
                         </div>
@@ -370,7 +370,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="single_special_cource">
-                        <div class="special_img_container"><img src="img/pc_jain.png" class="special_img" alt=""></div>
+                        <div class="special_img_container"><img src="img/pc_jain.png" class="special_img" alt="Prakash Chandra speaker image"></div>
                         <div class="special_cource_text">
                             <h3>Prakash Chandra Jain</h3>
                             <p>Officer on Special Duty, Transport Minister, MP</p>
@@ -379,7 +379,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="single_special_cource">
-                        <div class="special_img_container"><img src="img/mayank_rana.png" class="special_img" alt=""></div>
+                        <div class="special_img_container"><img src="img/mayank_rana.png" class="special_img" alt="Mayank Rana speaker image"></div>
                         <div class="special_cource_text">
                             <h3>Mayank Rana</h3>
                             <p>Indian Railway Services</p>
@@ -390,7 +390,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="single_special_cource">
-                        <div class="special_img_container"><img src="img/sweta_suman.jpg" class="special_img" alt=""></div>
+                        <div class="special_img_container"><img src="img/sweta_suman.jpg" class="special_img" alt="Sweta Suman speaker image"></div>
                         <div class="special_cource_text">
                             <h3>Sweta Suman</h3>
                             <p>UPSC'19 Rank 413, First Attempt</p>
@@ -399,7 +399,7 @@
                 </div>
                 <div class="col-sm-6 ">
                     <div class="single_special_cource">
-                        <div class="special_img_container"><img src="img/nilotpal_sanodiya.png" class="special_img" alt=""></div>
+                        <div class="special_img_container"><img src="img/nilotpal_sanodiya.png" class="special_img" alt="Nilotpal Sanodiya speaker image"></div>
                         <div class="special_cource_text">
                             <h3>Nilotpal Sanodiya</h3>
                             <p>India Post</p>
@@ -691,7 +691,7 @@
             <div class="row justify-content-between">
                 <div class="col-sm-6 col-md-4 col-xl-3">
                     <div class="single-footer-widget footer_1">
-                        <a href="index.html"> <img src="img/logo.png" alt=""> </a>
+                        <a href="index.html"> <img src="img/logo.png" alt="Success Factor logo"> </a>
                         <p>There are many wonderful career options which don’t have the similar level of awareness among the career aspirants. We aim to inform the aspirants about the hidden gems.</p>
                         <p>We also inform the career aspirants about the available sponsorship avenues and free resources. </p>
                     </div>
@@ -744,7 +744,7 @@
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
-    <script src="https://unpkg.com/plyr@3"></script>
+    <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js"></script>
     <script src="js/custom.js"></script>
     <script>
         const player = new Plyr('#player', {});
@@ -779,7 +779,7 @@
 
         const launchDate = 'December 5 2020 10:00:00 GMT-0550';
         document.querySelector('.launchCountDown').innerHTML = `<span class="counter">${getTimeRemaining(launchDate).days}</span><h4>Days till Summit</h4>`
-        
+
         function successMessage() {
             $('#gform *').fadeOut(100);
             $('#gform').prepend('<h1>Registration successful!</h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</span></h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6>');

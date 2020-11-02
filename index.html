@@ -351,13 +351,13 @@
             setTimeout(function() { bookNowButton.innerHTML = oldText }, 1000);
         });
 
-        const users = 135 + ((new Date().getDate() % 10) * 3);
+        const users = 150 + ((new Date().getDate() % 10) * 3);
         document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
         
-        setTimeout(() =>{
-            $('.whatsapp').prepend('<span class="contact_us">Contact Us</span>')
-            $('.whatsapp').toggleClass("whatsapp whatsapp_text")
-        }, 90000);
+        // setTimeout(() =>{
+        //     $('.whatsapp').prepend('<span class="contact_us">Contact Us</span>')
+        //     $('.whatsapp').toggleClass("whatsapp whatsapp_text")
+        // }, 90000);
 
         function getTimeRemaining(endtime){
             const total = Date.parse(endtime) - Date.parse(new Date());

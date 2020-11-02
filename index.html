@@ -28,18 +28,28 @@
     </script>
 
     <link rel="icon" href="img/favicon.png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/plyr@3.6.2/dist/plyr.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/animate.css"> -->
+    <!-- <link rel="stylesheet" href="css/themify-icons.css"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/plyr@3.6.2/dist/plyr.css"> -->
+    <!-- <link rel="stylesheet" href="css/flaticon.css"> -->
+    <!-- <link rel="stylesheet" href="css/magnific-popup.css"> -->
+    <!-- <link rel="stylesheet" href="css/slick.css"> -->
+    <!-- <link rel="stylesheet" href="css/nice-select.css"> -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/custom-style.css">
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f95fdb72a2baa0012f7f176&product=sop' async='async'></script>
+    <!-- <link rel="stylesheet" href="css/custom-style.css"> -->
+    
+    <link rel="preload" href="css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/bootstrap.min.css"></noscript>
+    <link rel="preload" href="css/animate.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/animate.css"></noscript>
+    <link rel="preload" href="css/themify-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/themify-icons.css"></noscript>
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+    <link rel="preload" href="https://unpkg.com/plyr@3.6.2/dist/plyr.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="https://unpkg.com/plyr@3.6.2/dist/plyr.css"></noscript>
+    <link rel="preload" href="css/flaticon.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/flaticon.css"></noscript>
+    <link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/magnific-popup.css"></noscript>
+    <link rel="preload" href="css/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/slick.css"></noscript>
+    <link rel="preload" href="css/nice-select.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/nice-select.css"></noscript>
+    <link rel="preload" href="css/custom-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/custom-style.css"></noscript>    
 </head>
 
 <body>
@@ -338,7 +348,9 @@
     <script src="js/waypoints.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
     <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src='https://platform-api.sharethis.com/js/sharethis.js#property=5f95fdb72a2baa0012f7f176&product=sop' async='async'></script>
+    <script src="js/custom.js" async></script>
+
     <script>
         const player = new Plyr('#player', {});
         $(document).ready(function() { $('select').niceSelect() });

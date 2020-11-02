@@ -291,9 +291,12 @@ path {
 .login-form > .form-title {
   margin: 10px 0;
   padding-bottom: 10px;
-  width: 200px;
-  border-bottom: 3px solid #78788c;
+  width: 300px;
+  font-size: 34px;
+  border-bottom: 4px solid #78788c;
 }
+
+
 
 .sharethis-inline-share-buttons {
   margin-top: 20px;
@@ -341,6 +344,14 @@ path {
 
   .member_counter > .container > .row {
     margin-bottom: 0px;
+  }
+
+  .login-form > .form-title {
+    margin: 10px 0;
+    padding-bottom: 10px;
+    width: 275px;
+    font-size: 32px;
+    border-bottom: 4px solid #78788c;
   }
 }
 

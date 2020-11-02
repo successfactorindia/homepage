@@ -174,7 +174,4 @@ $('.counter').counterUp({
   }
 });
 
-
-
-
 }(jQuery));

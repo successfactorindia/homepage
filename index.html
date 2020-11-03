@@ -49,7 +49,7 @@
     <link rel="preload" href="css/magnific-popup.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/magnific-popup.css"></noscript>
     <link rel="preload" href="css/slick.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/slick.css"></noscript>
     <link rel="preload" href="css/nice-select.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/nice-select.css"></noscript>
-    <link rel="preload" href="css/custom-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/custom-style.css"></noscript>    
+    <link rel="preload" href="css/custom-style.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> <noscript><link rel="stylesheet" href="css/custom-style.css"></noscript>
 </head>
 
 <body>
@@ -125,12 +125,17 @@
                           <input type="text" name="entry.1215479571" id="name" placeholder="Your first and last name" class="form-control-material" required />
                         </div>
                         <div class="form-input-material">
-                          <label for="phone">Phone number<span class="color-red"> *</span></label>
+                          <label for="phone">Phone Number<span class="color-red"> *</span></label>
                           <input type="tel" name="entry.621873637" id="phone" placeholder="Your 10 digit contact number" class="form-control-material" maxlength="10" minlength="10" required />
                         </div>
                         <div class="form-input-material">
                             <label for="email">Email<span class="color-red"> *</span></label>
                             <input type="email" name="entry.1910878951" id="email" placeholder="Your contact email" class="form-control-material" required/>
+                        </div>
+                        <div class="form-input-material">
+                            <label for="cities">Home City<span class="color-red"> *</span></label>
+                            <input list="cities" id="cities_input" placeholder="Enter home city" >
+                            <datalist id="cities"></datalist>
                         </div>
                         <div class="form-input-material">
                             <label for="exam">Preparing for which exam?</label>
@@ -155,6 +160,7 @@
                                 <option value="Other">Other</option>
                               </select>
                         </div>
+                         
                         <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
                         <div class="shareButton">
                             <div class="sharethis-inline-share-buttons"></div>
@@ -350,7 +356,6 @@
     <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js"></script>
     <script src='https://platform-api.sharethis.com/js/sharethis.js#property=5f95fdb72a2baa0012f7f176&product=sop' async='async'></script>
     <script src="js/custom.js" async></script>
-
     <script>
         const player = new Plyr('#player', {});
         $(document).ready(function() { $('select').niceSelect() });
@@ -365,11 +370,6 @@
 
         const users = 150 + ((new Date().getDate() % 10) * 3);
         document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
-        
-        // setTimeout(() =>{
-        //     $('.whatsapp').prepend('<span class="contact_us">Contact Us</span>')
-        //     $('.whatsapp').toggleClass("whatsapp whatsapp_text")
-        // }, 90000);
 
         function getTimeRemaining(endtime){
             const total = Date.parse(endtime) - Date.parse(new Date());
@@ -399,6 +399,7 @@
             var phone = $('input#phone').val();
             var email = $('input#email').val();
             var exam = $('select#exam').val();
+            var city = $('input#cities_input').val();
 
             $.ajax({
                 url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
@@ -406,7 +407,8 @@
                     "entry.1215479571": name,
                     "entry.621873637": phone,
                     "entry.1910878951": email,
-                    "entry.2114704935": exam
+                    "entry.2114704935": exam,
+                    "entry.1091312805": city
                 },
                 type: "POST",
                 dataType: "xml",
@@ -417,6 +419,21 @@
             });
         };
 
+
+    const cities = ["Delhi","Kolkata","Mumbai","Hyderabad","Bengaluru","Chennai","Ahmedabad","Surat","Pune","Jaipur","Kanpur","Lucknow","Nagpur","Ghaziabad","Indore","Coimbatore","Patna","Visakhapatnam","Bhopal","Nashik","Pimpri-Chinchwad","Agra","Vadodara","Ludhiana","Madurai","Varanasi","Meerut","Faridabad","Jamshedpur","Rajkot","Jabalpur","Asansol","Allahabad","Dhanbad","Srinagar","Aurangabad","Jodhpur","Amritsar","Ranchi","Gwalior","Chandigarh","Vijayawada","Tiruchirappalli","Raipur","Kota","Bareilly","Guwahati","Tirupur","Thiruvananthapuram","Solapur",
+        "Hubli","Salem","Aligarh","Gurgaon","Durg","Moradabad","Mysore","Bhubaneswar","Jalandhar","Warangal","Guntur","Dehradun","Bhiwandi","Saharanpur","Siliguri","Gorakhpur","Cuttack","Pondicherry","Amravati","Bikaner","Faizabad","Kochi","Firozabad","Bhavnagar","Durgapur","Bokaro Steel City","Naya Raipur","Rourkela","Ajmer","Nanded","Kolhapur","Jhansi","Gulbarga","Agartala","Erode","Ujjain","Sangli-Miraj-Kupwad","Jammu","Nellore","Mangalore","Tirunelveli","Muzaffarnagar","Belgaum","Vellore","Jamnagar","Udaipur","Gaya","Jalgaon","Mathura","Patiala","Panipat","Davangere","Calicut","Akola","Kurnool","Rajamahendravaram","Latur","Tuticorin","Bhagalpur","Malegaon","Bellary","Ambala","Muzaffarpur","Yamunanagar","Dhule","Dimapur","Tirupati","Rohtak","Sagar","Budaun","Korba","Bhilwara","Rampur","Shahjahanpur","Berhampur","Ahmednagar","Kollam","Bardhaman",
+        "Kadapa","Alwar","Bilaspur","Nandurbar","Bijapur","Ichalkaranji","Thrissur","Chandrapur","Malda","Shimoga","Junagadh","Farrukhabad","Kakinada","Nizamabad","Purnia","Haridwar","Hisar","Darbhanga","Tumkur","Baharampur","Habra","Jalpaiguri","Karnal","Ozhukarai","Bihar Sharif","Kharagpur","Aizawl","Sonipat","Gudiyatham","Dewas","Shantipur",
+        "Bathinda","Jalna","Satna","Mau","Roorkee","Ratlam","Parbhani","Sambalpur","Anantapur","Imphal","Rajnandgaon","Hapur","Karimnagar","Arrah","Noida","Etawah","Haldwani","Bharatpur","Begusarai","Sri Ganganagar","Dankuni","Gandhidham","Mirzapur","Sikar","Katihar","Dhulian","Ranaghat","Rewa","Bulandshahr","Kannur","Raichur","Pali","Ramagundam","Silchar","Vizianagaram","Nagercoil","Thanjavur","Katni","Sambhal","Singrauli","Nadiad","Eluru","Bidar","Munger","Chhapra","Burhanpur","Panchkula","Dindigul","Gandhinagar","Hospet","Bhusawal","Deoghar","Ongole","Puri","Haldia","Nandyal","Khandwa","Morena","Raiganj","Anand","Bhiwani","Bhind","Amroha","Hardoi","Vaniyambadi","Morbi","Fatehpur","Kasaragod","Raebareli","Daman","Orai","Chhindwara","Barmer","Sitapur","Bahraich","Phusro","Khammam","Khambhat","Sirsa","Modinagar","Krishnanagar","Guna","Shivpuri","Unnao","Surendranagar","Balasore","Nabadwip","Bongaigaon","Alappuzha","Alappuzha","Cuddalore","Hassan","Gadag","Shimla","Komarapalayam","Bahadurgarh","Machilipatnam","Midnapore","Bharuch","Hoshiarpur","Jaunpur","Adoni","Jind","Udupi","Tonk","Tenali","Lakhimpur","Balurghat","Kanchipuram",
+        "Vapi","Proddatur","Ambur","Robertsonpet","Hathras","Navsari","Banda","Pilibhit","Mahbubnagar","Bettiah","Vidisha","Saharsa","Kishangarh","Thanesar","Barabanki","Mughalsarai","Veraval","Rudrapur","Chittorgarh","Dibrugarh","Chittoor","Hazaribagh","Jorhat","Hindupur","Porbandar","Batala","Beawar","Bhadravati","Hanumangarh","Satara","Chhatarpur","Hajipur","Damoh","Sasaram","Nagaon","Beed","Mohali","Chitradurga","Tiruvannamalai","Abohar","Harihar","Basirhat","Kaithal","Pudukkottai","Godhra","Giridih","Pathankot","Shillong","Bhuj","Khurja","Bhimavaram","Pakhanjore","Mandsaur","Moga","Rewari","Ankleshwar","Kumbakonam","Pandharpur","Gonda","Kolar","Yavatmal","Bankura","Mandya","Dehri","Kamptee","Nalgonda","Madanapalle","Malerkotla","Siwan","Khargone","Mainpuri","Dholpur",
+        "Lalitpur","Chakdaha","Gondia","Ramgarh","Darjeeling","Palwal","Etah","Palakkad","Rajapalayam","Botad","Gangapur","Kottayam","Deoria","Bhadrak","Neemuch","Khanna","Alipurduar","Purulia","Guntakal","Pithampur","Ujhani","Srikakulam","Tinsukia","Patan","Jagdalpur","Motihari","Jangipur","Palanpur","Dharmavaram","Kashipur","Ghazipur","Sawai Madhopur","Churu","Medininagar","Dahod","Chirkunda","Nawada","Chikkamagallooru","Chikmagalur","Jetpur","Gudivada","Baran","Hoshangabad","Adilabad","Muktasar","Baripada","Hosur","Barnala","Makrana","Narasaraopet","Sultanpur","Azamgarh","Bijnor","Sahaswan","Basti","Gangawati","Kothamangalam","Valsad","Ambikapur","Itarsi","Panaji","Chandausi","Siddipet","Kalol","Bagaha","Achalpur","Gondal","Osmanabad","Akbarpur","Ballia","Deesa","Nagaur","Bangaon","Buxar","Firozpur","Hindaun","Mubarakpur","Tanda","Dhubri","Sehore","Anantnag","Tadipatri","Port Blair","Greater Noida","Shikohabad","Shamli","Kishanganj","Hinganghat","Cooch Behar","Karaikudi","Wardha","Ranebennuru","Sitamarhi","Neyveli","Amreli","Amreli","Suryapet","Jamalpur","Bhiwadi","Barshi","Bundi","Tadepalligudem",
+        "Miryalaguda", "Chirmiri", "Betul", "Amaravati", "Nagapattinam", "Baraut", "Jehanabad", "Seoni", "Rishikesh", "Khair", "Dhamtari", "Kapurthala", "Sujangarh", "Aurangabad", "Chilakaluripet", "Malappuram", "Kasganj", "Vasco", "Tezpur", "Jhunjhunu", "Datia", "Banswara", "Raigarh", "Nagda", "Lakhisarai", "Auraiya", "Kohima", "Gangtok", "Mahuva", "Silvassa", "Balangir", "Phagwara", "Jharsuguda", "Chalisgaon", "Khatauli", "Manjeri", "Mormugao", "Deoband", "Mahasamund", "Jagtial", "Viluppuram", "Amalner", "Sardarshahar", "Paramakudi", "Zirakpur", "Tiruchengode", "Nagina", "Mahoba", "Muradnagar", "Ramanagara", "Kovilpatti", "Dhanpuri", "Bhadohi", "Theni-Allinagaram", "Khamgaon", "Dhar", "Balaghat", "Akot", "Fatehpur", "Thalassery", "Bolpur", "Kanthi", "Rajpura", "Udgir", "Bhandara", "Dadri", "Ponnani", "Kadayanallur", "Pratapgarh", "Pollachi", "Najibabad", "Parli", "Ooty", "Jhumri Telaiya", "Margao", "Mancherial", "Karaikal", "Dausa", "Jeypore", "Mehsana", "Karauli", "Sahibganj", "Kothagudem", "Itanagar", "Bagalkot", "Kavaratti"];
+
+    var select = document.getElementById("cities");
+    for(var i = 0; i < cities.length; i++) {
+            var option = document.createElement('option');
+            option.value = cities[i];
+            select.append(option, 0);
+    }
 </script>
 
 </body>

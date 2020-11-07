@@ -137,7 +137,7 @@
                             <input list="cities" id="cities_input" placeholder="Enter your home city" >
                             <datalist id="cities"></datalist>
                         </div>
-                        <div class="form-input-material">
+                        <!-- <div class="form-input-material">
                             <label for="exam">Preparing for which exam?</label>
                             <select id="exam" class="wide">
                                 <option value="All">Select an exam</option>
@@ -159,6 +159,19 @@
                                 <option value="RPSC">RPSC</option>
                                 <option value="Other">Other</option>
                               </select>
+                        </div> -->
+                        <div class="form-input-material">
+                            <label for="exam">Preparing for what exams?</label>
+                            <div class="checkboxes">
+                                <input id="box1" type="checkbox" /><label for="box1">UPSC</label>
+                                <input id="box2" type="checkbox" /><label for="box2">SSC</label>
+                                <input id="box3" type="checkbox" /><label for="box3">Bank PO</label>
+                                <input id="box4" type="checkbox" /><label for="box4">RRB NTPC</label>
+                                <input id="box5" type="checkbox" /><label for="box5">PSUs</label>
+                                <input id="box6" type="checkbox" /><label for="box6">PSC</label>
+                                <input id="box7" type="checkbox" /><label for="box7">SI</label>
+                                <input id="box8" type="checkbox" /><label for="box8">Other</label>
+                            </div>
                         </div>
                         <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
                         <div class="shareButton">
@@ -357,6 +370,8 @@
     <script src="js/custom.js" async></script>
     <script>
         const player = new Plyr('#player', {});
+        var requesting = false;
+
         $(document).ready(function() { $('select').niceSelect() });
 
         $('.book_now_standard').on('click', function() {
@@ -397,25 +412,47 @@
             var name = $('input#name').val();
             var phone = $('input#phone').val();
             var email = $('input#email').val();
-            var exam = $('select#exam').val();
+            // var exam = $('select#exam').val();
             var city = $('input#cities_input').val();
+            var exam = '';
+            var box1 = $('#box1').is(":checked");
+            var box2 = $('#box2').is(":checked");
+            var box3 = $('#box3').is(":checked");
+            var box4 = $('#box4').is(":checked");
+            var box5 = $('#box5').is(":checked");
+            var box6 = $('#box6').is(":checked");
+            var box7 = $('#box7').is(":checked");
+            var box8 = $('#box8').is(":checked");
 
-            $.ajax({
-                url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
-                data: {
-                    "entry.1215479571": name,
-                    "entry.621873637": phone,
-                    "entry.1910878951": email,
-                    "entry.2114704935": exam,
-                    "entry.1091312805": city
-                },
-                type: "POST",
-                dataType: "xml",
-                statusCode: {
-                    0: successMessage,
-                    200: successMessage
-                }
-            });
+            if(box1) exam += 'UPSC, '
+            if(box2) exam += 'SSC'
+            if(box3) exam += 'Bank PO,'
+            if(box4) exam += 'RRB NTPC, '
+            if(box5) exam += 'PSUs, '
+            if(box6) exam += 'PSC, '
+            if(box7) exam += 'SI, '
+            if(box8) exam += 'Other, '
+
+            // if(!requesting) {
+            //     requesting = true;
+            //     setTimeout(function() { requesting = false }, 1000);
+                $.ajax({
+                    url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
+                    data: {
+                        "entry.1215479571": name,
+                        "entry.621873637": phone,
+                        "entry.1910878951": email,
+                        "entry.2114704935": exam,
+                        "entry.1091312805": city
+                    },
+                    type: "POST",
+                    dataType: "xml",
+                    statusCode: {
+                        0: successMessage,
+                        200: successMessage
+                    }
+                });
+            // }
         };
 
 

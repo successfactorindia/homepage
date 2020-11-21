@@ -86,15 +86,6 @@
                                       <li><a class="nav-link" href="presentations.html">Recorded Presentations</a></li>
                                     </ul>
                                   </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" href="#contact">Contact</a>
-                                </li> -->
-                                <!-- <li class="d-none d-lg-block">
-                                    <a class="btn_1 book_now_standard" href="https://forms.gle/9GGAb5caREs7eF1G7">
-                                        Register
-                                    </a>
-                                    <button onclick="scrollToPlans()" class="btn_1">Book Now</button>
-                                </li> -->
                             </ul>
                         </div>
                     </nav>
@@ -109,45 +100,14 @@
         <div class="container">
             <div class="hero-form-section row align-items-center">
                 <div class="hero-form hero-form-center col-lg-6 col-xl-6">
-                    <form name="gform" id="gform" class="login-form" onsubmit="" action="javascript: postToGoogle()" autocomplete="on">
-                        <h1 class="form-title">Free Registration</h1>
+                    <form name="gform" id="gform" class="login-form conference-login" onsubmit="" action="javascript: postToGoogle()" autocomplete="on">
+                        <h1 class="form-title">Conference Login</h1>
                         <div class="form-input-material">
-                           <label for="name">Full Name<span class="color-red"> *</span></label>
-                          <input type="text" name="entry.1215479571" id="name" placeholder="Your full name" class="form-control-material" required />
-                        </div>
-                        <div class="form-input-material">
-                            <label for="phone">Phone number<span class="color-red"> *</span></label>
+                          <label for="phone">Registered Phone number<span class="color-red"> *</span></label>
                           <input type="number" name="entry.621873637" id="phone" placeholder="Your contact number" class="form-control-material" required />
                         </div>
-                        <div class="form-input-material">
-                            <label for="email">Email</label>
-                            <input type="text" name="entry.1910878951" id="email" placeholder="Your contact email" class="form-control-material"/>
-                        </div>
-                        <div class="form-input-material">
-                            <label for="exam">Preparing for which exam?</label>
-                            <select id="exam" class="wide">
-                                <option value="All">Select an exam</option>
-                                <option value="UPSC">UPSC</option>
-                                <option value="SSC">SSC</option>
-                                <option value="PSC">PSC</option>
-                                <option value="Bank_PO">Bank PO</option>
-                                <option value="PSUs">PSUs</option>
-                                <option value="LIC">LIC</option>
-                                <option value="RRB_NTPC">RRB NTPC</option>
-                                <option value="RBI">RBI</option>
-                                <option value="IBPS">IBPS</option>
-                                <option value="SI">SI</option>
-                                <option value="NIACL">NIACL</option>
-                                <option value="SBI">SBI</option>
-                                <option value="KPSC">KPSC</option>
-                                <option value="JPSC">JPSC</option>
-                                <option value="MPSC">MPSC</option>
-                                <option value="RPSC">RPSC</option>
-                                <option value="NIACL">NIACL</option>
-                                <option value="Other">Other</option>
-                              </select>
-                        </div>
-                        <button type="submit" class="btn_1 book_now_standard reg-btn">SUBMIT</button>
+                        <button type="submit" class="btn_1 book_now_standard reg-btn">SIGN IN</button>
+                        <a class="reg-btn" href="index.html">Register</a>
                       </form>
                 </div>
             </div>
@@ -224,50 +184,31 @@
     <script src="https://unpkg.com/plyr@3"></script>
     <script src="js/custom.js"></script>
     <script>
-        const player = new Plyr('#player', {});
-        $(document).ready(function() {
-            $('select').niceSelect();
-        });
-    
-        $('.book_now_standard').on('click', function() {
-            const loading = "<i class='fa fa-circle-o-notch fa-spin'></i> Loading";
-            const bookNowButton = this;
-            const oldText = bookNowButton.innerHTML;
-            bookNowButton.innerHTML = loading;
-            setTimeout(function() { bookNowButton.innerHTML = oldText }, 5000);
-        });
+        window.onload = () => {
+            if(localStorage.getItem('loggedIn')){
+                window.location = 'conference.html'
+            }
+        };
 
-        (function() {
-            const users = 35 + ((new Date().getDate() % 10) * 3);
-            document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
-            setTimeout(() => $('.whatsapp').show(), 1000);
-        })();
-
-       
-        function successMessage() {
-            $('#gform *').fadeOut(100);
-            $('#gform').prepend('<h1>Registration successful!</h1><h5>You will get the link to attend online conference on <span class="color-text-orange">4th December.</span></h5><h5>We wish you all the success in the world.</h5><h6>Share this with your friends:</h6>');
+        function successLogin (e) {
+            if(e && e.exists) {
+                localStorage.setItem('loggedIn', true);
+                console.log(localStorage.getItem('loggedIn'));
+                window.location = 'conference.html'
+            } else {
+                window.location = 'index.html#login-form'
+            }
         }
 
         function postToGoogle() {
-            var name = $('input#name').val();
             var phone = $('input#phone').val();
-            var email = $('input#email').val();
-            var exam = $('select#exam').val();
 
             $.ajax({
-                url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
-                data: {
-                    "entry.1215479571": name,
-                    "entry.621873637": phone,
-                    ...email != null && email != '' ? {"entry.1910878951": email} : {},
-                    ...exam != "All" ? {"entry.2114704935": exam} : {},
-                },
-                type: "POST",
-                dataType: "xml",
+                url: "https://us-central1-urlshortner-670ee.cloudfunctions.net/exists?phone="+phone,
+                type: "GET",
                 statusCode: {
-                    0: successMessage,
-                    200: successMessage
+                    0: successLogin,
+                    200: successLogin
                 }
             });
         };

@@ -329,6 +329,18 @@ path {
   margin-bottom: 30px;
 }
 
+.conference-login {
+  margin-top: 80px;
+  height: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 310px;
+}
+
+.hero-form-center {
+  margin: auto;
+}
+
 @media only screen and (max-width: 991px) {
   .login-form {
     margin: 0px;
@@ -346,9 +358,17 @@ path {
   .login-form > .form-title {
     margin: 10px 0;
     padding-bottom: 10px;
-    width: 275px;
+    width: 285px;
     font-size: 32px;
     border-bottom: 4px solid #78788c;
+  }
+
+  .conference-login {
+    margin-top: 80px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 320px;
   }
 }
 
@@ -374,4 +394,8 @@ input[type=checkbox]:checked + label:before { width: 14px;} /* allow space for c
 
 input[type=checkbox] + label {
   margin-right: 5px;
+}
+
+.agree-conditions {
+  color: #666666;
 }

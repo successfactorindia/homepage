@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- custom style CSS -->
     <link rel="stylesheet" href="css/custom-style.css">
+    <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js" type="javascript"></script>
 </head>
 
 <body>
@@ -115,8 +116,13 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin: auto;">
-            <iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/videoseries?controls=0&rel=0&modestbranding=1&amp;list=PLN5flh1rCAjD44oM-YQKOIWKCATaHC4Vs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="plyr__video-embed-conference row justify-content-center" id="player">
+            <iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/6xUZieiozns?controls=0&rel=0&modestbranding=1&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>          
+
+        <div style="display: none;" class="row" style="margin: auto;">
+            <iframe style="margin: auto;" controls="0"  autoplay="1" width="560" height="315" src="https://www.youtube.com/embed/videoseries?controls=0&rel=0&modestbranding=1&amp;list=PLN5flh1rCAjD44oM-YQKOIWKCATaHC4Vs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
     </div>
@@ -168,3 +174,41 @@
         </div>
     </div>
 </footer>
+    <script>
+        function getTimePast (startHour,startMinute) {
+        var currentTime = new Date();
+        var currentOffset = currentTime.getTimezoneOffset();
+        var ISTOffset = 330;   // IST offset UTC +5:30 
+        var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+        var hoursIST = ISTTime.getHours()
+        var minutesIST = ISTTime.getMinutes()
+        var secondsIST = ISTTime.getSeconds()
+
+        var hourDiff = (hoursIST * 3600) - (startHour * 3600)
+        var minuteDiff = (minutesIST*60) - (startMinute*60)
+
+        var startSeconds = hourDiff + minuteDiff + secondsIST
+        return startSeconds > 0 ? startSeconds : 0;
+        }
+
+        const conferenceTime = {
+        hour: 14,
+        minute: 30
+        }
+
+        const player = new Plyr('#player', {
+        listeners: {
+            play (e) {
+            if (!player.playing) {
+                player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
+            }
+            }
+        }
+        });
+
+        player.on("ready", function() {
+            player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
+        })
+    </script>
+</body>
+</html>

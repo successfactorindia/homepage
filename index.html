@@ -398,7 +398,7 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="https://www.troopel.com/"><span class="ti-comments"></span>Visit eSavari</a>
+                                            <a href="https://www.troopel.com/"><span class="ti-comments"></span>Visit Troopel</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -499,7 +499,7 @@
         });
 
         const users = 150 + ((new Date().getDate() % 10) * 3);
-        document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
+        // document.getElementsByClassName('limited_seats')[0].innerHTML = `${users} students registered yesterday`
 
         function getTimeRemaining(endtime){
             const total = Date.parse(endtime) - Date.parse(new Date());
@@ -510,7 +510,7 @@
             return {total,days,hours,minutes,seconds};
         }
 
-        const launchDate = 'December 5 2020 10:00:00 GMT-0550';
+        const launchDate = 'December 19 2020 10:00:00 GMT-0550';
         document.querySelector('.launchCountDown').innerHTML = `<span class="counter">${getTimeRemaining(launchDate).days}</span><h4>Days till Summit</h4>`
 
         function successMessage() {
@@ -528,7 +528,6 @@
             var name = $('input#name').val();
             var phone = $('input#phone').val();
             var email = $('input#email').val();
-            // var exam = $('select#exam').val();
             var city = $('input#cities_input').val();
             var exam = '';
             var box1 = $('#box1').is(":checked");
@@ -549,26 +548,22 @@
             if(box7) exam += 'SI, '
             if(box8) exam += 'Other, '
 
-            // if(!requesting) {
-            //     requesting = true;
-            //     setTimeout(function() { requesting = false }, 1000);
-                $.ajax({
-                    url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
-                    data: {
-                        "entry.1215479571": name,
-                        "entry.621873637": phone,
-                        "entry.1910878951": email,
-                        "entry.2114704935": exam,
-                        "entry.1091312805": city
-                    },
-                    type: "POST",
-                    dataType: "xml",
-                    statusCode: {
-                        0: successMessage,
-                        200: successMessage
-                    }
-                });
-            // }
+            $.ajax({
+                url: "https://docs.google.com/forms/u/1/d/e/1FAIpQLSdHOdxCtJ7DIZNB2Ps0-xfCmW3r_s9t9ArUsWncW-9eueN0LA/formResponse",
+                data: {
+                    "entry.1215479571": name,
+                    "entry.621873637": phone,
+                    "entry.1910878951": email,
+                    "entry.2114704935": exam,
+                    "entry.1091312805": city
+                },
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: successMessage,
+                    200: successMessage
+                }
+            });
         };
 
 

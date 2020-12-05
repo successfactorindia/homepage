@@ -55,11 +55,11 @@
     <link rel="stylesheet" href="css/custom-style.css">
 
     <style>
-        .plyr__controls {
-            opacity: 0;
-            pointer-events: none;
-            display: none;
-        }
+        [data-plyr="settings"],
+            .plyr__controls .plyr__controls__item.plyr__progress__container,
+            .plyr__controls .plyr__controls__item.plyr__time {
+                display: none;
+            }
     </style>
 
     <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js" type="text/javascript"></script>
@@ -130,7 +130,7 @@
             <iframe style="margin: auto;" 
             width="360" 
             height="315" 
-            src="https://www.youtube.com/embed/FE3QJZIlGQU?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1controls=0&amp;rel=0&modestbranding=1&amp;autoplay=1&amp;controls=0" 
+            src="https://www.youtube.com/embed/FE3QJZIlGQU?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
             frameborder="0" 
             allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
             allowfullscreen
@@ -303,43 +303,57 @@
     </div>
 </footer>
     <script>
-
-        function getTimePast (startHour,startMinute) {
-        var currentTime = new Date();
-        var currentOffset = currentTime.getTimezoneOffset();
-        var ISTOffset = 330;   // IST offset UTC +5:30 
-        var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
-        var hoursIST = ISTTime.getHours()
-        var minutesIST = ISTTime.getMinutes()
-        var secondsIST = ISTTime.getSeconds()
-
-        var hourDiff = (hoursIST * 3600) - (startHour * 3600)
-        var minuteDiff = (minutesIST*60) - (startMinute*60)
-
-        var startSeconds = hourDiff + minuteDiff + secondsIST
-        return startSeconds > 0 ? startSeconds : 0;
-        }
-
-        const conferenceTime = {
-        hour: 10,
-        minute: 00
-        }
-
-        const player = new Plyr('#player', {
-            title: 'Govt. Exams Conference',
-            autoplay: true,
-            listeners: {
-                play (e) {
-                if (!player.playing) {
-                    player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
-                }
-                }
+        console.log('run')
+        function supports_html5_storage() {
+            try {
+                return 'localStorage' in window && window['localStorage'] !== null;
+            } catch(e) {
+                return false;
             }
-        });
+        }
+        var supportsLocalstorage = supports_html5_storage();
 
-        player.on("ready", function() {
-            player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
-        })
+        if((supportsLocalstorage && (localStorage.getItem('successfactor/loggedIn') == "true")) || !supportsLocalstorage) {
+            function getTimePast (startHour,startMinute) {
+                var currentTime = new Date();
+                var currentOffset = currentTime.getTimezoneOffset();
+                var ISTOffset = 330;   // IST offset UTC +5:30 
+                var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+                var hoursIST = ISTTime.getHours()
+                var minutesIST = ISTTime.getMinutes()
+                var secondsIST = ISTTime.getSeconds()
+
+                var hourDiff = (hoursIST * 3600) - (startHour * 3600)
+                var minuteDiff = (minutesIST * 60) - (startMinute * 60)
+
+                var startSeconds = hourDiff + minuteDiff + secondsIST
+                return startSeconds > 0 ? startSeconds : 0;
+            }
+
+            var conferenceTime = {
+                hour: 10,
+                minute: 00
+            }
+
+            var player = new Plyr('#player', {
+                title: 'Govt. Exams Conference',
+                listeners: {
+                    play (e) {
+                        if (!player.playing) {
+                            player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
+                            player.muted = false;
+                            player.fullscreen.active = true;
+                        }
+                    }
+                }
+            });
+
+            // player.on("ready", function() {
+            //     player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
+            // });
+        } else {
+            window.location = 'login.html'
+        }
     </script>
 </body>
 </html>

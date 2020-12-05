@@ -365,10 +365,15 @@ path {
 
   .conference-login {
     margin-top: 80px;
-    height: 300px;
+    height: 320px;
     margin-left: auto;
     margin-right: auto;
     min-width: 320px;
+  }
+
+  .agree-conditions {
+    color: #666666;
+    font-size: 12px;
   }
 }
 
@@ -398,4 +403,10 @@ input[type=checkbox] + label {
 
 .agree-conditions {
   color: #666666;
+}
+
+.login-not-found {
+  color: red;
+  margin-top: 8px;
+  opacity: 0;
 }

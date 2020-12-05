@@ -101,8 +101,9 @@
                           <label for="phone">Registered Phone number<span class="color-red"> *</span></label>
                           <input type="number" name="entry.621873637" id="phone" placeholder="Your contact number" class="form-control-material" required />
                         </div>
+                        <div class="login-not-found">Error: Number not found. Click here to <a href="index.html#gform">Register</a></div>
                         <button type="submit" class="btn_1 book_now_standard reg-btn">SIGN IN</button>
-                        <a class="reg-btn" href="index.html">Register</a>
+                        <!-- <a class="reg-btn" href="index.html">Register</a> -->
                       </form>
                 </div>
             </div>
@@ -164,7 +165,7 @@
     <script src="js/slick.min.js"></script>
     <script src="js/waypoints.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
-    <script src="js/custom.js"></script>
+    <!-- <script src="js/custom.js"></script> -->
     <script>
         function supports_html5_storage() {
             try {
@@ -174,26 +175,28 @@
             }
         }
 
-        if(supports_html5_storage() && localStorage.getItem('loggedIn')) {
+        if(supports_html5_storage() && (localStorage.getItem('successfactor/loggedIn') == "true")) {
             window.location = 'conference.html'
         }
 
         function successLogin(e) {
             if(e && e.exists) {
                 if(supports_html5_storage()) {
-                    localStorage.setItem('loggedIn', true);
+                    localStorage.setItem('successfactor/loggedIn', true);
                 }
                 window.location = 'conference.html'
             } else {
-                window.location = 'index.html#login-form'
+                $('.login-not-found').css({ opacity: 1 });
+                // window.location = 'index.html#login-form'
             }
         }
 
         function postToGoogle() {
+            $('.login-not-found').css({ opacity: 0 });
             var phone = $('input#phone').val();
 
             $.ajax({
-                url: "https://us-central1-urlshortner-670ee.cloudfunctions.net/exists?phone="+phone,
+                url: "https://asia-south1-conference-in.cloudfunctions.net/exists?phone="+phone,
                 type: "GET",
                 statusCode: {
                     0: successLogin,

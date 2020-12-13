@@ -50,7 +50,7 @@
     <style>
         [data-plyr="settings"],
             .plyr__controls .plyr__controls__item.plyr__progress__container,
-            .plyr__controls .plyr__controls__item.plyr__time {
+            .plyr__controls .plyr__controls__item.plyr__time, .watchScoreContainer {
                 display: none;
             }
 
@@ -76,6 +76,9 @@
                 color: white;
                 display:flex;
                 justify-content: center;
+            }
+            .watchScoreTotal {
+                color: #ff663b;
             }
     </style>
 </head>
@@ -139,6 +142,16 @@
           </div>          
     </div>
 </section>
+<section class="watchScoreContainer container">
+    <div class="row justify-content-center">
+        <div class="col-xl-5">
+            <div class="section_tittle text-center">
+                <h2 style="margin-top: 30px;">Watch Score: <span class="watchScoreTotal"><span class="watchScore"></span> / 500</span></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="container ">
     <div class="row justify-content-center">
         <div class="col-xl-5">
@@ -301,6 +314,21 @@
 </body>
 <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js" type="text/javascript"></script>
     <script>
+        if(window.sessionId == null) {
+            window.sessionId = Date.now();
+        }
+
+        if(window.accountId == null) {
+            window.accountId = localStorage.getItem('successfactor/loggedInUserNumber') || 0;
+            fetch(`https://m4d.in/getMyActivity/${window.accountId }`).then(i => i.json()).then((i) => {
+                    document.querySelector('.watchScoreContainer').style.display = 'block';
+                    window.mywatchscore = i.r || 0;
+                    document.querySelector('.watchScore').innerText = window.mywatchscore;
+                }
+            )
+        }
+
+        var pingLengthMin = 1;
 
         function supports_html5_storage() {
             try {
@@ -311,7 +339,7 @@
         }
         var supportsLocalstorage = supports_html5_storage();
 
-        if((supportsLocalstorage && (localStorage.getItem('successfactor/loggedIn') == "true")) || !supportsLocalstorage) {
+        if((supportsLocalstorage && (localStorage.getItem('successfactor/loggedIn') == "T")) || !supportsLocalstorage) {
             function getTimePast (startHour,startMinute) {
                 var currentTime = new Date();
                 var currentOffset = currentTime.getTimezoneOffset();
@@ -333,6 +361,11 @@
                 minute: 00
             }
 
+            var conferenceEndTime = {
+                hour: 17, 
+                minute: 00
+            };
+
             var player = new Plyr('#player', {
                 title: 'Govt. Exams Conference',
                 listeners: {
@@ -349,25 +382,40 @@
             var countdown = document.querySelector('.countdown');
             var conferenceVideo = document.querySelector('#player');
 
-            let interval;
-            interval = setInterval(() => {
-            const time = (Math.abs(getTimePast(conferenceTime.hour,conferenceTime.minute)) + 10);
-            const sec = time % 60;
-            const min = ((time - sec) / 60) % 60;
-            const hour = Math.floor((time - sec) / 3600);
+            var videoInterval, activityInterval;
 
-            const hourStr = hour == 0 ? `` : `${hour}:`
-            const minStr = min < 10 ? `0${min}` : `${min}`
-            const secStr = sec < 10 ? `0${sec}` : `${sec}`
-            
-            if(getTimePast(conferenceTime.hour,conferenceTime.minute) - 10 > 0) {
-                countdown.style.display = "none"
-                conferenceVideo.style.display = "block"
-                clearInterval(interval);
-            } else {
-                countdown.style.display = "block"
-                countdown.innerHTML = `<div class="timer-title">Conference starts in </div><div class="timeStr">${hourStr}${minStr}:${secStr}</div>`
-            }
+            videoInterval = setInterval(() => {
+                const time = (Math.abs(getTimePast(conferenceTime.hour, conferenceTime.minute)) + 10);
+                const sec = time % 60;
+                const min = ((time - sec) / 60) % 60;
+                const hour = Math.floor((time - sec) / 3600);
+
+                const hourStr = hour == 0 ? `` : `${hour}:`
+                const minStr = min < 10 ? `0${min}` : `${min}`
+                const secStr = sec < 10 ? `0${sec}` : `${sec}`
+
+                if(getTimePast(conferenceTime.hour,conferenceTime.minute) - 10 > 0) {
+                    countdown.style.display = "none"
+                    conferenceVideo.style.display = "block"
+                    
+                    fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=0`, {});
+
+                    activityInterval = setInterval(() => {
+                        fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=${pingLengthMin}`, {});
+                        
+                        window.mywatchscore += pingLengthMin;
+                        document.querySelector('.watchScore').innerText = window.mywatchscore;
+                        
+                        if (getTimePast(conferenceEndTime.hour,conferenceEndTime.minute) > 0) {
+                            clearInterval(activityInterval);
+                        }
+                    }, 60000 * pingLengthMin);
+
+                    clearInterval(videoInterval);
+                } else {
+                    countdown.style.display = "block"
+                    countdown.innerHTML = `<div class="timer-title">Conference starts in </div><div class="timeStr">${hourStr}${minStr}:${secStr}</div>`
+                }
             }, 1000);
 
         } else {

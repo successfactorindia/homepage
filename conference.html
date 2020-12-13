@@ -14,7 +14,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
- 
         gtag('config', 'UA-176776866-1');
     </script>
 	<!-- Hotjar Tracking Code for successfactor.in -->
@@ -29,21 +28,16 @@
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
 
-    <!-- Share this icons -->
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5f95fc1a2a2baa0012f7f175&product=inline-share-buttons" async="async"></script>
 
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- animate CSS -->
     <link rel="stylesheet" href="css/animate.css">
-    <!-- owl carousel CSS -->
-    <!-- <link rel="stylesheet" href="css/owl.carousel.min.css"> -->
-    <!-- themify CSS -->
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
-    <!-- flaticon CSS -->
+
     <link rel="stylesheet" href="css/flaticon.css">
     <!-- font awesome CSS -->
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -53,34 +47,52 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- custom style CSS -->
     <link rel="stylesheet" href="css/custom-style.css">
-
     <style>
         [data-plyr="settings"],
             .plyr__controls .plyr__controls__item.plyr__progress__container,
             .plyr__controls .plyr__controls__item.plyr__time {
                 display: none;
             }
-    </style>
 
-    <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js" type="text/javascript"></script>
+            .countdown {
+                font-size: 20px;
+                display: none;
+            }
+
+            #player {
+                display: none;
+            }
+
+            .timer-title {
+                display:flex;
+                justify-content: center;
+                padding: 20px 0px;
+            }
+
+            .timeStr {
+                padding: 100px 20px;
+                font-size: 60px;
+                background-color: #ff663b;
+                color: white;
+                display:flex;
+                justify-content: center;
+            }
+    </style>
 </head>
 
 <body>
-    <!--::header part start::-->
     <header class="main_menu home_menu">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html"> <img src="img/SF.svg" alt="logo"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
-                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
-                            id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
                             <ul class="navbar-nav align-items-center">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="index.html">Home</a>
@@ -97,39 +109,27 @@
                                       <li><a class="nav-link" href="presentations.html">Recorded Presentations</a></li>
                                     </ul>
                                   </li>
-                                <!-- <li class="nav-item">
-                                    <a class="nav-link" href="#contact">Contact</a>
-                                </li> -->
-                                <!-- <li class="d-none d-lg-block">
-                                    <a class="btn_1 book_now_standard" href="https://forms.gle/9GGAb5caREs7eF1G7">
-                                        Register
-                                    </a>
-                                    <button onclick="scrollToPlans()" class="btn_1">Book Now</button>
-                                </li> -->
                             </ul>
-                        </div>
+                        </div> -->
                     </nav>
                 </div>
             </div>
         </div>
     </header>
-    <!-- Header part end-->
-    
     <section id="speakers" class="special_cource padding_top" style="padding-top: 90px;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-5">
                 <div class="section_tittle text-center">
-                    <!-- <p>popular courses</p> -->
                     <h2>Government Exam Conference</h2>
                 </div>
             </div>
         </div>
-
+        <div class="countdown"></div>
         <div class="plyr__video-embed-conference row justify-content-center" id="player">
             <iframe style="margin: auto;" 
-            width="360" 
-            height="315" 
+            width="360"
+            height="315"
             src="https://www.youtube.com/embed/FE3QJZIlGQU?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
             frameborder="0" 
             allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
@@ -137,7 +137,6 @@
             allowtransparency
             ></iframe>
           </div>          
-
     </div>
 </section>
 <section class="container ">
@@ -162,7 +161,6 @@
                                 <li>
                                     <a href="https://kautilyaacademy.com/"><span class="ti-comments"></span>Visit Kautilya Academy</a>
                                 </li>
-                               
                             </ul>
                         </div>
                     </div>
@@ -255,13 +253,12 @@
                     </div>
             </div>
 </section>
-<!-- footer part start-->
 <footer id="contact" class="footer-area">
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-sm-6 col-md-4 col-xl-3">
                 <div class="single-footer-widget footer_1">
-                    <a href="index.html"> <img src="img/logo.png" alt=""> </a>
+                    <a href="index.html"> <img src="img/SF.svg" alt=""> </a>
                     <p>There are many wonderful career options which don’t have the similar level of awareness among the career aspirants. We aim to inform the aspirants about the hidden gems.</p>
                     <p>We also inform the career aspirants about the available sponsorship avenues and free resources. </p>
                 </div>
@@ -285,7 +282,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="container-fluid">
         <div class="row">
@@ -302,8 +298,10 @@
         </div>
     </div>
 </footer>
+</body>
+<script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js" type="text/javascript"></script>
     <script>
-        console.log('run')
+
         function supports_html5_storage() {
             try {
                 return 'localStorage' in window && window['localStorage'] !== null;
@@ -327,7 +325,7 @@
                 var minuteDiff = (minutesIST * 60) - (startMinute * 60)
 
                 var startSeconds = hourDiff + minuteDiff + secondsIST
-                return startSeconds > 0 ? startSeconds : 0;
+                return startSeconds;
             }
 
             var conferenceTime = {
@@ -348,12 +346,32 @@
                 }
             });
 
-            // player.on("ready", function() {
-            //     player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
-            // });
+            var countdown = document.querySelector('.countdown');
+            var conferenceVideo = document.querySelector('#player');
+
+            let interval;
+            interval = setInterval(() => {
+            const time = (Math.abs(getTimePast(conferenceTime.hour,conferenceTime.minute)) + 10);
+            const sec = time % 60;
+            const min = ((time - sec) / 60) % 60;
+            const hour = Math.floor((time - sec) / 3600);
+
+            const hourStr = hour == 0 ? `` : `${hour}:`
+            const minStr = min < 10 ? `0${min}` : `${min}`
+            const secStr = sec < 10 ? `0${sec}` : `${sec}`
+            
+            if(getTimePast(conferenceTime.hour,conferenceTime.minute) - 10 > 0) {
+                countdown.style.display = "none"
+                conferenceVideo.style.display = "block"
+                clearInterval(interval);
+            } else {
+                countdown.style.display = "block"
+                countdown.innerHTML = `<div class="timer-title">Conference starts in </div><div class="timeStr">${hourStr}${minStr}:${secStr}</div>`
+            }
+            }, 1000);
+
         } else {
             window.location = 'login.html'
         }
     </script>
-</body>
 </html>

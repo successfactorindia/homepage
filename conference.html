@@ -80,6 +80,15 @@
             .watchScoreTotal {
                 color: #ff663b;
             }
+            .section_tittle h2:after {
+                display: none;
+            }
+
+            @media (max-width: 576px) {
+                .section_tittle {
+                    margin-bottom: 30px;
+                }
+            }
     </style>
 </head>
 
@@ -146,7 +155,9 @@
     <div class="row justify-content-center">
         <div class="col-xl-5">
             <div class="section_tittle text-center">
-                <h2 style="margin-top: 30px;">Watch Score: <span class="watchScoreTotal"><span class="watchScore"></span> / 500</span></h2>
+                <h2 style="font-size: 22px;">Watch Time: <span class="watchScoreTotal"><span class="watchScore"></span> / 300 mins</span></h2>
+                <h3 style="font-size: 12px;">Watch <span class="watchScoreTotal">300</span> mins to earn completion certificate</h3>
+                <h3 style="display: none;font-size: 12px;">Thank you for completing the conference. You will receive completion certificate via email.</h3>
             </div>
         </div>
     </div>
@@ -204,7 +215,6 @@
                             <li>
                                 <a href="https://www.money4drive.com"><span class="ti-comments"></span>Visit Money4Drive</a>
                             </li>
-                           
                         </ul>
                     </div>
                 </div>
@@ -322,7 +332,7 @@
             window.accountId = localStorage.getItem('successfactor/loggedInUserNumber') || 0;
             fetch(`https://m4d.in/getMyActivity/${window.accountId }`).then(i => i.json()).then((i) => {
                     document.querySelector('.watchScoreContainer').style.display = 'block';
-                    window.mywatchscore = i.r || 0;
+                    window.mywatchscore = +(i.r || 0);
                     document.querySelector('.watchScore').innerText = window.mywatchscore;
                 }
             )
@@ -362,7 +372,7 @@
             }
 
             var conferenceEndTime = {
-                hour: 17, 
+                hour: 16, 
                 minute: 00
             };
 

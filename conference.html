@@ -28,24 +28,16 @@
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
 
-
     <link rel="icon" href="img/favicon.png">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- animate CSS -->
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
-
     <link rel="stylesheet" href="css/flaticon.css">
-    <!-- font awesome CSS -->
     <link rel="stylesheet" href="css/magnific-popup.css">
-    <!-- swiper CSS -->
     <link rel="stylesheet" href="css/slick.css">
-    <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- custom style CSS -->
     <link rel="stylesheet" href="css/custom-style.css">
     <style>
         [data-plyr="settings"],
@@ -53,13 +45,12 @@
             .plyr__controls .plyr__controls__item.plyr__time, .watchScoreContainer {
                 display: none;
             }
-
             .countdown {
                 font-size: 20px;
                 display: none;
             }
 
-            #player {
+            #playerDayOne, #playerDayTwo {
                 display: none;
             }
 
@@ -138,7 +129,7 @@
             </div>
         </div>
         <div class="countdown"></div>
-        <div class="plyr__video-embed-conference row justify-content-center" id="player">
+        <div class="plyr__video-embed-conference row justify-content-center" id="playerDayOne">
             <iframe style="margin: auto;" 
             width="360"
             height="315"
@@ -148,7 +139,19 @@
             allowfullscreen
             allowtransparency
             ></iframe>
-          </div>          
+        </div>
+        <div class="plyr__video-embed-conference row justify-content-center" id="playerDayTwo">
+            <iframe style="margin: auto;" 
+            width="360"
+            height="315"
+            src="https://www.youtube.com/embed/8AN8oxZYOyc?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
+            frameborder="0" 
+            allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
+            allowfullscreen
+            allowtransparency
+            ></iframe>
+        </div>
+          
     </div>
 </section>
 <section class="watchScoreContainer container">
@@ -338,7 +341,9 @@
             )
         }
 
+        var isPageVisible = true;
         var pingLengthMin = 1;
+        var pageLoadDay = 0;
 
         function supports_html5_storage() {
             try {
@@ -355,42 +360,70 @@
                 var currentOffset = currentTime.getTimezoneOffset();
                 var ISTOffset = 330;   // IST offset UTC +5:30 
                 var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
-                var hoursIST = ISTTime.getHours()
-                var minutesIST = ISTTime.getMinutes()
-                var secondsIST = ISTTime.getSeconds()
+                var hoursIST = ISTTime.getHours();
+                var minutesIST = ISTTime.getMinutes();
+                var secondsIST = ISTTime.getSeconds();
 
-                var hourDiff = (hoursIST * 3600) - (startHour * 3600)
-                var minuteDiff = (minutesIST * 60) - (startMinute * 60)
+                var hourDiff = (hoursIST * 3600) - (startHour * 3600);
+                var minuteDiff = (minutesIST * 60) - (startMinute * 60);
 
-                var startSeconds = hourDiff + minuteDiff + secondsIST
+                var startSeconds = hourDiff + minuteDiff + secondsIST;
                 return startSeconds;
             }
+
+            function getCurrentTimeIST() {
+                var currentTime = new Date();
+                var currentOffset = currentTime.getTimezoneOffset();
+                var ISTOffset = 330; // IST offset UTC +5:30 
+                var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset) * 60000);
+                var d = ISTTime.getDate();
+                var h = ISTTime.getHours();
+                var m = ISTTime.getMinutes();
+
+                return { d, h, m };
+            }
+
+            pageLoadDay = getCurrentTimeIST().d;
 
             var conferenceTime = {
                 hour: 10,
                 minute: 00
-            }
+            };
 
             var conferenceEndTime = {
                 hour: 16, 
                 minute: 00
             };
 
-            var player = new Plyr('#player', {
-                title: 'Govt. Exams Conference',
+            var playerDayOne = new Plyr('#playerDayOne', {
+                title: 'Govt. Exams Conference Day 1',
                 listeners: {
                     play (e) {
-                        if (!player.playing) {
-                            player.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
-                            player.muted = false;
-                            player.fullscreen.active = true;
+                        if (!playerDayOne.playing) {
+                            playerDayOne.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
+                            playerDayOne.muted = false;
+                            playerDayOne.fullscreen.active = true;
+                        }
+                    }
+                }
+            });
+
+            var playerDayTwo = new Plyr('#playerDayTwo', {
+                title: 'Govt. Exams Conference Day 2',
+                listeners: {
+                    play (e) {
+                        if (!playerDayTwo.playing) {
+                            playerDayTwo.currentTime = getTimePast(conferenceTime.hour,conferenceTime.minute);
+                            playerDayTwo.muted = false;
+                            playerDayTwo.fullscreen.active = true;
                         }
                     }
                 }
             });
 
             var countdown = document.querySelector('.countdown');
-            var conferenceVideo = document.querySelector('#player');
+            var conferenceVideoDayOne = document.querySelector('#playerDayOne');
+            var conferenceVideoDayTwo = document.querySelector('#playerDayTwo');
 
             var videoInterval, activityInterval;
 
@@ -405,17 +438,25 @@
                 const secStr = sec < 10 ? `0${sec}` : `${sec}`
 
                 if(getTimePast(conferenceTime.hour,conferenceTime.minute) - 10 > 0) {
-                    countdown.style.display = "none"
-                    conferenceVideo.style.display = "block"
+                    countdown.style.display = "none";
+
+                    if(getCurrentTimeIST().d % 2 === 1) {
+                        conferenceVideoDayOne.style.display = "block";
+                        conferenceVideoDayTwo.style.display = "none";
+                    } else {
+                        conferenceVideoDayOne.style.display = "none";
+                        conferenceVideoDayTwo.style.display = "block";
+                    }
                     
                     fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=0`, {});
 
                     activityInterval = setInterval(() => {
-                        fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=${pingLengthMin}`, {});
-                        
-                        window.mywatchscore += pingLengthMin;
-                        document.querySelector('.watchScore').innerText = window.mywatchscore;
-                        
+                        if(isPageVisible) {
+                            fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=${pingLengthMin}`, {});
+                            window.mywatchscore += pingLengthMin;
+                            document.querySelector('.watchScore').innerText = window.mywatchscore;
+                        }
+
                         if (getTimePast(conferenceEndTime.hour,conferenceEndTime.minute) > 0) {
                             clearInterval(activityInterval);
                         }
@@ -428,8 +469,22 @@
                 }
             }, 1000);
 
+            document.addEventListener("visibilitychange", function() {
+                if (document.visibilityState === 'visible') {
+                    isPageVisible = true;
+                    if(pageLoadDay != getCurrentTimeIST().d) {
+                        pageLoadDay = getCurrentTimeIST().d;
+                        window.location.reload();
+                    }
+                } else {
+                    isPageVisible = false;
+                }
+                console.log(Date.now(), isPageVisible);
+            });
         } else {
             window.location = 'login.html'
         }
+
+        // https://stereologics.wordpress.com/2015/04/02/about-page-visibility-api-hidden-visibilitychange-visibilitystate/
     </script>
 </html>

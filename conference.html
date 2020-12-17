@@ -437,10 +437,10 @@
                 const minStr = min < 10 ? `0${min}` : `${min}`
                 const secStr = sec < 10 ? `0${sec}` : `${sec}`
 
-                if(getTimePast(conferenceTime.hour,conferenceTime.minute) - 10 > 0) {
+                if(getTimePast(conferenceTime.hour,conferenceTime.minute) > 0) {
                     countdown.style.display = "none";
-
-                    if(getCurrentTimeIST().d % 2 === 1) {
+                    // Make this back to 1
+                    if(getCurrentTimeIST().d % 2 == 0) {
                         conferenceVideoDayOne.style.display = "block";
                         conferenceVideoDayTwo.style.display = "none";
                     } else {

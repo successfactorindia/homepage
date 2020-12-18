@@ -42,7 +42,7 @@
     <style>
         [data-plyr="settings"],
             .plyr__controls .plyr__controls__item.plyr__progress__container,
-            .plyr__controls .plyr__controls__item.plyr__time, .watchScoreContainer {
+            .plyr__controls .plyr__controls__item.plyr__time, .watchScoreContainer, #fbpage {
                 display: none;
             }
             .countdown {
@@ -72,6 +72,14 @@
                 color: #ff663b;
             }
             .section_tittle h2:after {
+                display: none;
+            }
+
+            #fbpage {
+                justify-content: center;
+            }
+
+            #completeWatchScore {
                 display: none;
             }
 
@@ -135,7 +143,7 @@
             height="315"
             src="https://www.youtube.com/embed/FE3QJZIlGQU?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
             frameborder="0" 
-            allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
+            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
             allowfullscreen
             allowtransparency
             ></iframe>
@@ -146,12 +154,13 @@
             height="315"
             src="https://www.youtube.com/embed/8AN8oxZYOyc?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
             frameborder="0" 
-            allow=" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
+            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
             allowfullscreen
             allowtransparency
             ></iframe>
         </div>
-          
+        <div id="fbpage">
+        </div>
     </div>
 </section>
 <section class="watchScoreContainer container">
@@ -159,8 +168,8 @@
         <div class="col-xl-5">
             <div class="section_tittle text-center">
                 <h2 style="font-size: 22px;">Watch Time: <span class="watchScoreTotal"><span class="watchScore"></span> / 300 mins</span></h2>
-                <h3 style="font-size: 12px;">Watch <span class="watchScoreTotal">300</span> mins to earn completion certificate</h3>
-                <h3 style="display: none;font-size: 12px;">Thank you for completing the conference. You will receive completion certificate via email.</h3>
+                <h3 id="incompleteWatchScore" style="font-size: 12px;">Watch <span class="watchScoreTotal">300</span> mins to earn completion certificate</h3>
+                <h3 id="completeWatchScore" style="font-size: 12px;">Thank you for completing the conference. You will receive completion certificate via email.</h3>
             </div>
         </div>
     </div>
@@ -391,7 +400,7 @@
             };
 
             var conferenceEndTime = {
-                hour: 16, 
+                hour: 16,
                 minute: 00
             };
 
@@ -422,9 +431,54 @@
             });
 
             var countdown = document.querySelector('.countdown');
-            var conferenceVideoDayOne = document.querySelector('#playerDayOne');
-            var conferenceVideoDayTwo = document.querySelector('#playerDayTwo');
+            var conferenceVideoDayOne = document.getElementById('playerDayOne');
+            var conferenceVideoDayTwo = document.getElementById('playerDayTwo');
+            var fbpage = document.getElementById('fbpage');
+            var incompleteWatchScore = document.getElementById('incompleteWatchScore');
+            var completeWatchScore = document.getElementById('completeWatchScore');
 
+            function showFbPage() {
+                countdown.style.display = 'none';
+                conferenceVideoDayOne.style.display = 'none';
+                conferenceVideoDayTwo.style.display = 'none';
+                fbpage.style.display = 'flex';
+                fbpage.innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuccessfactorindia&tabs=events&width=320&height=244&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="320" height="244" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+            }
+
+            function showDayOneVideo() {
+                countdown.style.display = 'none';
+                conferenceVideoDayOne.style.display = 'block';
+                conferenceVideoDayTwo.style.display = 'none';
+                fbpage.style.display = 'none';
+            }
+
+            function showDayTwoVideo() {
+                countdown.style.display = 'none';
+                conferenceVideoDayOne.style.display = 'none';
+                conferenceVideoDayTwo.style.display = 'block';
+                fbpage.style.display = 'none';
+            }
+
+            function showCountdown() {
+                countdown.style.display = 'block';
+                conferenceVideoDayOne.style.display = 'none';
+                conferenceVideoDayTwo.style.display = 'none';
+                fbpage.style.display = 'none';
+            }
+
+            function showCompleteWatchScore() {
+                incompleteWatchScore.style.display = 'none';
+                completeWatchScore.style.display = 'block';
+            }
+
+            function showIncompleteWatchScore() {
+                incompleteWatchScore.style.display = 'block';
+                completeWatchScore.style.display = 'none';
+            }
+
+            if (getTimePast(conferenceEndTime.hour,conferenceEndTime.minute) > 0) {
+                showFbPage();
+            } else {
             var videoInterval, activityInterval;
 
             videoInterval = setInterval(() => {
@@ -438,49 +492,54 @@
                 const secStr = sec < 10 ? `0${sec}` : `${sec}`
 
                 if(getTimePast(conferenceTime.hour,conferenceTime.minute) > 0) {
-                    countdown.style.display = "none";
-                    // Make this back to 1
-                    if(getCurrentTimeIST().d % 2 == 0) {
-                        conferenceVideoDayOne.style.display = "block";
-                        conferenceVideoDayTwo.style.display = "none";
+                    if(getCurrentTimeIST().d % 2 == 1) {
+                        showDayOneVideo();
                     } else {
-                        conferenceVideoDayOne.style.display = "none";
-                        conferenceVideoDayTwo.style.display = "block";
+                        showDayTwoVideo();
                     }
                     
                     fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=0`, {});
+
+
+                    if(window.mywatchscore >= 300) {
+                        showCompleteWatchScore();
+                    }
 
                     activityInterval = setInterval(() => {
                         if(isPageVisible) {
                             fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=${pingLengthMin}`, {});
                             window.mywatchscore += pingLengthMin;
                             document.querySelector('.watchScore').innerText = window.mywatchscore;
+                            if(window.mywatchscore >= 300) {
+                                showCompleteWatchScore();
+                            }
                         }
 
                         if (getTimePast(conferenceEndTime.hour,conferenceEndTime.minute) > 0) {
                             clearInterval(activityInterval);
+                            showFbPage();
                         }
                     }, 60000 * pingLengthMin);
-
                     clearInterval(videoInterval);
                 } else {
-                    countdown.style.display = "block"
+                    showCountdown();
                     countdown.innerHTML = `<div class="timer-title">Conference starts in </div><div class="timeStr">${hourStr}${minStr}:${secStr}</div>`
                 }
             }, 1000);
+        }
 
-            document.addEventListener("visibilitychange", function() {
-                if (document.visibilityState === 'visible') {
-                    isPageVisible = true;
-                    if(pageLoadDay != getCurrentTimeIST().d) {
-                        pageLoadDay = getCurrentTimeIST().d;
-                        window.location.reload();
-                    }
-                } else {
-                    isPageVisible = false;
+        document.addEventListener("visibilitychange", function() {
+            if (document.visibilityState === 'visible') {
+                isPageVisible = true;
+                if(pageLoadDay != getCurrentTimeIST().d) {
+                    pageLoadDay = getCurrentTimeIST().d;
+                    window.location.reload();
                 }
-                console.log(Date.now(), isPageVisible);
-            });
+            } else {
+                isPageVisible = false;
+            }
+        });
+
         } else {
             window.location = 'login.html'
         }

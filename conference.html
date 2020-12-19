@@ -61,9 +61,9 @@
             }
 
             .timeStr {
-                padding: 100px 20px;
+                padding: 60px 20px;
                 font-size: 60px;
-                background-color: #ff663b;
+                background-color: #297bc3;
                 color: white;
                 display:flex;
                 justify-content: center;
@@ -88,6 +88,11 @@
                     margin-bottom: 30px;
                 }
             }
+
+            .plyr__control--overlaid svg {
+                width: 28px;
+                height: 28px;
+            }
     </style>
 </head>
 
@@ -98,6 +103,7 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <a class="navbar-brand" href="index.html"> <img src="img/SF.svg" alt="logo"> </a>
+                        <!-- <a>logout</a> -->
                         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -141,7 +147,7 @@
             <iframe style="margin: auto;" 
             width="360"
             height="315"
-            src="https://www.youtube.com/embed/FE3QJZIlGQU?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
+            src="https://www.youtube.com/embed/JPNbdT3OVhY?origin=https://successfactor.in&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;controls=0&amp;controls=0"
             frameborder="0" 
             allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"     
             allowfullscreen
@@ -579,6 +585,7 @@
     </div>
 </footer>
 </body>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
 <script src="https://unpkg.com/plyr@3.6.2/dist/plyr.min.js" type="text/javascript"></script>
     <script>
         if(window.sessionId == null) {
@@ -686,8 +693,11 @@
                 countdown.style.display = 'none';
                 conferenceVideoDayOne.style.display = 'none';
                 conferenceVideoDayTwo.style.display = 'none';
-                fbpage.style.display = 'flex';
-                fbpage.innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuccessfactorindia&tabs=events&width=320&height=244&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="320" height="244" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+                fbpage.style.display = 'block';
+                playerDayOne.stop();
+                playerDayTwo.stop();
+                // fbpage.innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsuccessfactorindia&tabs=events&width=320&height=244&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="320" height="244" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>'
+                fbpage.innerHTML = '<p style="text-align: center;font-size: 24px;"><a href="https://www.facebook.com/successfactorindia/live">Click here to join live call<a/></p><a href="https://www.facebook.com/successfactorindia/live"> <img src="./fblive.jpeg"/> </a>'
             }
 
             function showDayOneVideo() {
@@ -727,15 +737,14 @@
             var videoInterval, activityInterval;
 
             videoInterval = setInterval(() => {
-                const time = (Math.abs(getTimePast(conferenceTime.hour, conferenceTime.minute)) + 10);
-                const sec = time % 60;
-                const min = ((time - sec) / 60) % 60;
-                const hour = Math.floor((time - sec) / 3600);
+                var time = (Math.abs(getTimePast(conferenceTime.hour, conferenceTime.minute)));
+                var sec = time % 60;
+                var min = ((time - sec) / 60) % 60;
+                var hour = Math.floor((time - sec) / 3600);
 
-                const hourStr = hour == 0 ? `` : `${hour}:`
-                const minStr = min < 10 ? `0${min}` : `${min}`
-                const secStr = sec < 10 ? `0${sec}` : `${sec}`
-
+                var hourStr = hour == 0 ? `` : `${hour}:`
+                var minStr = min < 10 ? `0${min}` : `${min}`
+                var secStr = sec < 10 ? `0${sec}` : `${sec}`
                 if(getTimePast(conferenceTime.hour,conferenceTime.minute) > 0) {
                     if(getCurrentTimeIST().d % 2 == 1) {
                         showDayOneVideo();
@@ -744,7 +753,6 @@
                     }
                     
                     fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=0`, {});
-
 
                     if(window.mywatchscore >= 300) {
                         showCompleteWatchScore();
@@ -784,9 +792,8 @@
                 isPageVisible = false;
             }
         });
-
         } else {
-            window.location = 'login.html'
+            window.location = 'index.html'
         }
 
         // https://stereologics.wordpress.com/2015/04/02/about-page-visibility-api-hidden-visibilitychange-visibilitystate/

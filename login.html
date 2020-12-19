@@ -104,11 +104,9 @@
                         <div class="login-not-found">Error: Number not found. Click here to <h4><a href="beta.html#gform">Register</a></h4></div>
 
                         <nav class="row">
-                            <a class="col-sm-6 " style="padding-top: 32px;" href="beta.html#gform">Register</a>
+                            <a class="col-sm-6" style="padding-top: 32px;" href="beta.html#gform">Register</a>
                             <button type="submit" class="btn_1 book_now_standard reg-btn col-sm-6">SIGN IN</button>
                         </nav>
-
-                        <!-- <a class="reg-btn" href="index.html">Register</a> -->
                       </form>
                 </div>
             </div>
@@ -144,7 +142,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="container-fluid">
             <div class="row">
@@ -190,10 +187,10 @@
                     localStorage.setItem('successfactor/loggedIn', "T");
                     localStorage.setItem('successfactor/loggedInUserNumber', $('input#phone').val());
                 }
+
                 window.location = 'conference.html'
             } else {
                 $('.login-not-found').css({ opacity: 1 });
-                // window.location = 'index.html#login-form'
             }
         }
 

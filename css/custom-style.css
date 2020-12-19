@@ -4,7 +4,7 @@
   --clr-gray-med: #616b74;
   --clr-gray-dark: #414b56;
   --clr-primary: #f9b700;
-  --plyr-color-main: rgba(51, 170, 51, .1);
+  /* --plyr-color-main: rgba(51, 170, 51, .1); */
 }
 
 path {
@@ -331,7 +331,7 @@ path {
 
 .conference-login {
   margin-top: 80px;
-  height: 320px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
   min-width: 310px;
@@ -365,7 +365,7 @@ path {
 
   .conference-login {
     margin-top: 80px;
-    height: 320px;
+    height: 360px;
     margin-left: auto;
     margin-right: auto;
     min-width: 320px;

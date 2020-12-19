@@ -734,6 +734,9 @@
 
             if (getTimePast(conferenceEndTime.hour,conferenceEndTime.minute) > 0) {
                 showFbPage();
+                if(getTimePast(conferenceEndTime.hour + 1,conferenceEndTime.minute) < 0) {
+                    window.location = 'https://www.facebook.com/successfactoroffical/live'
+                }
             } else {
             var videoInterval, activityInterval;
 
@@ -798,8 +801,6 @@
         } else {
             window.location = 'index.html'
         }
-
-        // https://stereologics.wordpress.com/2015/04/02/about-page-visibility-api-hidden-visibilitychange-visibilitystate/
     </script>
 
     <style>

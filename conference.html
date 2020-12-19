@@ -174,9 +174,9 @@
     <div class="row justify-content-center">
         <div class="col-xl-5">
             <div class="section_tittle text-center">
-                <h2 style="font-size: 22px;">Watch Time: <span class="watchScoreTotal"><span class="watchScore"></span> / 300 mins</span></h2>
-                <h3 id="incompleteWatchScore" style="font-size: 12px;">Watch <span class="watchScoreTotal">300</span> mins to earn completion certificate</h3>
-                <h3 id="completeWatchScore" style="font-size: 12px;">Thank you for completing the conference. You will receive completion certificate via email.</h3>
+                <h2 style="font-size: 22px;">Watch Time: <span class="watchScoreTotal"><span class="watchScore"></span> / 200 mins</span></h2>
+                <h3 id="incompleteWatchScore" style="font-size: 12px;">Watch <span class="watchScoreTotal">200</span> mins to earn authority signed completion certificate</h3>
+                <h3 id="completeWatchScore" style="font-size: 12px;">Thank you for completing the conference. You will receive authority signed certificate via email.</h3>
             </div>
         </div>
     </div>
@@ -755,16 +755,18 @@
                     
                     fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=0`, {});
 
-                    if(window.mywatchscore >= 300) {
+                    if(window.mywatchscore >= 200) {
                         showCompleteWatchScore();
                     }
 
                     activityInterval = setInterval(() => {
                         if(isPageVisible) {
-                            fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=${pingLengthMin}`, {});
                             window.mywatchscore += pingLengthMin;
+                            if(window.mywatchscore % 2 == 0) {
+                                fetch(`https://m4d.in/addActivity?userId=${window.accountId}&sessionId=${window.sessionId}&length=${2}`, {});
+                            }
                             document.querySelector('.watchScore').innerText = window.mywatchscore;
-                            if(window.mywatchscore >= 300) {
+                            if(window.mywatchscore >= 200) {
                                 showCompleteWatchScore();
                             }
                         }

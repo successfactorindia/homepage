@@ -1864,7 +1864,7 @@ ul {
 }
 @media (max-width: 576px) {
   .banner_part {
-    height: 1310px;
+    height: 910px;
     background-image: none;
     background-color: #f7f7f7;
   }

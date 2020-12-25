@@ -616,7 +616,7 @@
         }
         var supportsLocalstorage = supports_html5_storage();
 
-        if((supportsLocalstorage && (localStorage.getItem('successfactor/loggedIn') == "T")) || !supportsLocalstorage) {
+        if((supportsLocalstorage && (localStorage.getItem('successfactor/loggedIn') == "True")) || !supportsLocalstorage) {
             function getTimePast (startHour,startMinute) {
                 var currentTime = new Date();
                 var currentOffset = currentTime.getTimezoneOffset();

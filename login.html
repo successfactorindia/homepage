@@ -177,14 +177,14 @@
             }
         }
 
-        if(supports_html5_storage() && (localStorage.getItem('successfactor/loggedIn') == "T")) {
+        if(supports_html5_storage() && (localStorage.getItem('successfactor/loggedIn') == "True")) {
             window.location = 'conference.html'
         }
 
         function successLogin(e) {
             if(e && e.exists) {
                 if(supports_html5_storage()) {
-                    localStorage.setItem('successfactor/loggedIn', "T");
+                    localStorage.setItem('successfactor/loggedIn', "True");
                     localStorage.setItem('successfactor/loggedInUserNumber', $('input#phone').val());
                 }
 

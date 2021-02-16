@@ -143,7 +143,7 @@
               <p class="fadeInUp wow" data-wow-delay=".6s">20 - 21 March 2021, Online</p>
               <h1 class="wow fadeInDown heading" data-wow-delay=".4s">International Marketing Conference</h1>
               <!-- <a href="#" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Get Ticket</a> -->
-              <a href="#" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Get Tickets</a>
+              <a href="#pricing" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Get Tickets</a>
             </div>
           </div>
           <div class="carousel-item">
@@ -899,7 +899,7 @@
               <div class="price">
                 <h2>INR 2,999 </h2>
                 <h2 style="text-decoration: line-through;">INR 12,000</h2>
-                <p>Early Bird Discount Ending on 21 January</p>
+                <p>Early Bird Discount Ending on 21 February</p>
               </div>
               <div class="pricing-list">
                 <ul>
@@ -912,7 +912,7 @@
                   <li><i class="lni-check-mark-circle"></i><span class="text">Fitness Band (Rs.1500)</span></li>
                 </ul>
               </div>
-              <a href="#" class="btn btn-common">Buy Ticket</a>
+              <a onclick="onPaymentButtonClick()" class="btn btn-common">Buy Ticket</a>
             </div>
           </div>
         </div>
@@ -1178,5 +1178,41 @@
     <script src="assets/js/jquery.slicknav.js"></script>
     <script src="assets/js/nivo-lightbox.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://js.instamojo.com/v1/checkout.js"></script>
+    <script>
+      /* Start client-defined Callback Handler Functions */
+      function onOpenHandler () {
+        // alert('Payments Modal is Opened');
+      }
+
+      function onCloseHandler () {
+        // alert('Payments Modal is Closed');
+      }
+
+      function onPaymentSuccessHandler (response) {
+        // alert('Payment Success');
+        console.log('Payment Success Response', response);
+      }
+
+      function onPaymentFailureHandler (response) {
+        // alert('Payment Failure');
+        console.log('Payment Failure Response', response);
+      }
+      /* End client-defined Callback Handler Functions */
+
+      /* Configuring Handlers */
+      Instamojo.configure({
+        handlers: {
+          onOpen: onOpenHandler,
+          onClose: onCloseHandler,
+          onSuccess: onPaymentSuccessHandler,
+          onFailure: onPaymentFailureHandler
+        }
+      });
+      
+      function onPaymentButtonClick() {
+        Instamojo.open("https://www.instamojo.com/@successfactorindia/l3cad93e6858c49059d84a76b4d4d5077")
+      }
+    </script>
   </body>
 </html>

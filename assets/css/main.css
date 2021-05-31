@@ -632,6 +632,18 @@ a.back-to-top:hover, a.back-to-top:focus {
   color: #E91E63 !important;
 }
 
+.successfactor-logo {
+  color:white;
+  font-family: 'Josefin Sans';
+}
+
+
+.top-nav-collapse .successfactor-logo {
+  color: #E91E63;
+  font-family: 'Josefin Sans';
+}
+
+
 .indigo {
   background: transparent;
 }
@@ -2218,20 +2230,20 @@ a.back-to-top:hover, a.back-to-top:focus {
   border-color: #fff;
 }
 .float-whatsapp{
-	position:fixed;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	right:40px;
-	background-color:#25d366;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-  font-size:30px;
-	box-shadow: 2px 2px 3px #999;
-  z-index:100;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 20px;
+  right: 16px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 20px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
 }
 
 .my-float-whatsapp{
-	margin-top:16px;
+	margin-top:10px;
 }
